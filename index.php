@@ -1,6 +1,15 @@
 <?php
 session_start();
 include("./conexion.php");
+if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] != ""){
+	include_once('./funciones.php');
+	$a = new login();
+	try{
+		echo $a->getUserName($enlace, $_POST['username']);
+	}catch(Exception $e){
+		error_log('Usuario no encontrado: '.$e->getMessage());
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,61 +33,9 @@ include("./conexion.php");
 			?>
 		</header>
 		<!-- Contenido -->
-		<section class="container bg-info pt-5">
-			<div class="table-responsive pt-3">
-				<table class="table">
-					<thead>
-						<tr>
-							<th class="table-primary text-center" colspan="5">Usuarios</th>
-						</tr>
-						<tr class="table-primary">
-							<th>Nombre</th>
-							<th>Apellido</th>
-							<th>Usuario</th>
-							<th>Nivel</th>
-							<th>Contraseña</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="table-success">
-							<th>Helmo</th>
-							<th>Velásquez</th>
-							<th>hejevero</th>
-							<th>Adminitrador</th>
-							<th>123</th>
-						</tr>
-						<tr class="table-success">
-							<th>Denisse</th>
-							<th>Zamora</th>
-							<th>dzamora</th>
-							<th>Adminitrador</th>
-							<th>123</th>
-						</tr>
-						<tr class="table-success">
-							<th>Doris</th>
-							<th>Rodríguez</th>
-							<th>drodriguez</th>
-							<th>Usuario</th>
-							<th>123</th>
-						</tr>
-						<tr class="table-success">
-							<th>Liliana</th>
-							<th>Velásquez</th>
-							<th>lvelasquez</th>
-							<th>Usuario</th>
-							<th>123</th>
-						</tr>
-						<tr class="table-success">
-							<th>Bernardo</th>
-							<th>Velásquez</th>
-							<th>hejevero</th>
-							<th>Usuario</th>
-							<th>123</th>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</section>
+		<?php
+			include("./pages/modules/inicio.php");
+		?>
 	</body>
 	<footer>
 	</footer>
