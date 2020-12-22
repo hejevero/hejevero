@@ -1,14 +1,18 @@
 <?php
 session_start();
-include("./conexion.php");
+//include("./conexion.php");
+include('./funciones.php');
+$user = new conexion("localhost", "root", "", "hejevero");
 if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] != ""){
-	include_once('./funciones.php');
-	$a = new login();
-	try{
-		echo $a->getUserName($enlace, $_POST['username']);
-	}catch(Exception $e){
-		error_log('Usuario no encontrado: '.$e->getMessage());
-	}
+	//$a = new login();
+	//try{
+	//	echo $a->getUserName($enlace, $_POST['username']);
+	//}catch(Exception $e){
+	//	error_log('Usuario no encontrado: '.$e->getMessage());
+	//}
+	$usuario = new sesion();
+	$usuario->getUserNick($_POST['username'], $_POST['password']);
+	echo($_COOKIE["userNow"]);
 }
 ?>
 <!DOCTYPE html>

@@ -15,19 +15,25 @@
 			</thead>
 			<tbody>
 				<?php
-					$conUser = "SELECT * FROM user INNER JOIN level ON user.level_id_level=level.id_level WHERE state_user >= 1";
-					$resUser = mysqli_query($enlace, $conUser);
-					while($user = mysqli_fetch_array($resUser)){
+					//$conUser = "SELECT * FROM user INNER JOIN level ON user.level_id_level=level.id_level WHERE state_user >= 1";
+					//$resUser = mysqli_query($conUser);
+					//while($user = mysqli_fetch_array($resUser)){
+					if($resultado=$user->buscar("SELECT * FROM user INNER JOIN level ON user.level_id_level=level.id_level WHERE state_user >= 1")){
+						foreach($resultado as $userS){
 				?>
 						<tr class="table-success">
-							<th><?php echo $user['name_user']; ?></th>
-							<th><?php echo $user['lastname_user']; ?></th>
-							<th><?php echo $user['nick_user']; ?></th>
-							<th><?php echo $user['name_level']; ?></th>
-							<th><?php echo $user['pass_user']; ?></th>
+							<th><?php echo $userS['name_user']; ?></th>
+							<th><?php echo $userS['lastname_user']; ?></th>
+							<th><?php echo $userS['nick_user']; ?></th>
+							<th><?php echo $userS['name_level']; ?></th>
+							<th><?php echo $userS['pass_user']; ?></th>
 						</tr>
 				<?php
-					};
+					//};
+						}
+					}else{
+						
+					}
 				?>
 			</tbody>
 		</table>
