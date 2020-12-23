@@ -1,11 +1,14 @@
 <?php
 //Conexion a basse de datos
 class conexion{
-	public $dbserver;
-	public $dbuser;
-	public $dbpass;
-	public $dbname;
-	public $conexion;
+	private $dbserver;		//__construct
+	private $dbuser;		//__construct
+	private $dbpass;		//__construct
+	private $dbname;		//__construct
+	private $conexion;		//__construct
+	private $nickUser;		//getUserNick
+	private $passUser; 		//getUserNick
+	public $messagePublic; 	//mensaje generico
 	public function __construct($dbserver, $dbuser, $dbpass, $dbname){
 		$this->dbserver = $dbserver;
 		$this->dbuser = $dbuser;
@@ -14,26 +17,44 @@ class conexion{
 		$this->conexion = new mysqli($this->dbserver, $this->dbuser, $this->dbpass, $this->dbname);
 		$this->conexion->set_charset("utf-8");
 	}
-	public function buscar($consulta){
-		$resultado = $this->conexion->query($consulta);
-		if($resultado){
-			return $resultado->fetch_all(MYSQLI_ASSOC);
-			return false;
-		}
-	}
-}
-class sesion{
-	public $nickUser;
-	public $passUser;
 	public function getUserNick($nickUser, $passUser){
+		$this->nickUser = $nickUser;
+		$this->passUser = $passUser;
 		try{
-			setcookie("userNow", $nickUser, time()+3600);
+			$consultaNick = "SELECT * FROM user INNER JOIN level ON user.LEVEL_ID_LEVEL=level.ID_LEVEL WHERE NICK_USER='".$this->nickUser."' AND PASS_USER='".$this->passUser."';";
+			if($resultado = self::buscarPorConsulta($consultaNick)){
+				foreach($resultado as $value){
+					setcookie("userNow", $value["name_user"], time()+3600);
+					setcookie("levelNow", $value["name_level"], time()+3600);
+				}
+				$this->messagePublic = "Usuario encontrado";
+			}else{
+				$this->messagePublic = $consultaNick." Error usuario no encontrado";
+			}
+			$messagePublic = $this->messagePublic;
 		}catch(Exception $e){
 			error_log(
 				'Algo salio mal : '.
 				$e->getMessage()
 			);
 		}
+		return false;
+	}
+	public function buscarPorConsulta($consulta){
+		$resultado = $this->conexion->query($consulta);
+		if($resultado){
+			return $resultado->fetch_all(MYSQLI_ASSOC);
+			return false;
+		}
+	}
+	public function volverInicio(){
+		echo("
+		<html>
+			<head>
+				<meta http-equiv='refresh' content='10; url=http://localhost/hejevero/index.php'>
+			</head>
+		</html>
+		");
 	}
 }
 ?>

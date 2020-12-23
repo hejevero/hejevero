@@ -1,4 +1,4 @@
-<section class="container bg-info pt-5">
+<section class="container bg-light pt-5">
 	<div class="table-responsive pt-3">
 		<table class="table">
 			<thead>
@@ -18,7 +18,7 @@
 					//$conUser = "SELECT * FROM user INNER JOIN level ON user.level_id_level=level.id_level WHERE state_user >= 1";
 					//$resUser = mysqli_query($conUser);
 					//while($user = mysqli_fetch_array($resUser)){
-					if($resultado=$user->buscar("SELECT * FROM user INNER JOIN level ON user.level_id_level=level.id_level WHERE state_user >= 1")){
+					if($resultado=$user->buscarPorConsulta("SELECT * FROM user INNER JOIN level ON user.level_id_level=level.id_level WHERE state_user >= 1")){
 						foreach($resultado as $userS){
 				?>
 						<tr class="table-success">

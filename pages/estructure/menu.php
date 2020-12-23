@@ -3,33 +3,91 @@
 	<span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-	<a class="navbar-brand" href="#">Hejevero</a>
-	<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-		<li class="nav-item active">
-			<a class="nav-link" href="#">
+	<a class="navbar-brand" href="#">
+		<?php
+		if(isset($_COOKIE["userNow"]) && $_COOKIE["userNow"] != ""){
+			echo($_COOKIE["userNow"]." / ".$_COOKIE["levelNow"]);
+		}else{
+			echo("Test");
+		}
+		?>
+	</a>
+	<?php
+	//Usuario General/Cliente
+	if($levelNow == "Administrador"){
+		?>
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">
 				<img src="./images/icons/house-door.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
 				Inicio
 				<span class="sr-only">(Current)</span>
-			</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">
-				<img src="./images/icons/plus-square.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
-				Bodegas
-			</a>
-		</li>
-		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<img src="./images/icons/file-earmark-person.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
-				Usuario
-			</a>
-			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="#">Informaci&oacute;n</a>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item trigger-btn" href="#myModal" data-toggle="modal">Iniciar Sesi&oacute;n</a>
-			</div>
-		</li>
-	</ul>
+				</a>
+			</li>
+			<li class="nav-item dropdown active">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="./images/icons/calendar-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Agregar
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown0">
+					<a class="dropdown-item" href="#">Usuarios</a>
+					<a class="dropdown-item" href="#">Cargos</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Bodegas</a>
+					<a class="dropdown-item" href="#">Producto</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Permisos</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown active">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="./images/icons/card-checklist.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Bodegas
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+					<a class="dropdown-item" href="./index.php?bodega=agregar">Agregar</a>
+					<a class="dropdown-item" href="#">Gestionar</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown active">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="./images/icons/file-earmark-person.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Usuario
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+					<a class="dropdown-item" href="#">Perfil</a>
+					<a class="dropdown-item" href="#">Gestionar</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="./process.php?log-out=true">Cerrar sesión</a>
+				</div>
+			</li>
+		</ul>
+		<?php
+	}elseif($levelNow == ""){
+	?>
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">
+					<img src="./images/icons/house-door.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Inicio
+					<span class="sr-only">(Current)</span>
+				</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="./images/icons/file-earmark-person.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Usuario
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Informaci&oacute;n</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item trigger-btn" href="#myModal" data-toggle="modal">Iniciar Sesi&oacute;n</a>
+				</div>
+			</li>
+		</ul>
+	<?php
+	}
+	?>
 	<form class="form-inline my-2 my-lg-0">
 		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
@@ -48,7 +106,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="index.php" method="post">
+				<form action="./process.php" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" name="username" placeholder="Nombre de usuario" required="required">
 					</div>
