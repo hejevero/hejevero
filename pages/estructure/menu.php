@@ -18,7 +18,7 @@
 		?>
 		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 			<li class="nav-item active">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="./">
 				<img src="./images/icons/house-door.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
 				Inicio
 				<span class="sr-only">(Current)</span>
@@ -45,8 +45,8 @@
 					Bodegas
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-					<a class="dropdown-item" href="./index.php?bodega=agregar">Agregar</a>
-					<a class="dropdown-item" href="#">Gestionar</a>
+					<a class="dropdown-item" href="./?bodega=agregar">Agregar</a>
+					<a class="dropdown-item" href="./?bodega=gestionar">Gestionar</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown active">
@@ -56,7 +56,7 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
 					<a class="dropdown-item" href="#">Perfil</a>
-					<a class="dropdown-item" href="#">Gestionar</a>
+					<a class="dropdown-item" href="./?gestionar-usuario=true">Gestionar</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="./process.php?log-out=true">Cerrar sesión</a>
 				</div>
@@ -73,7 +73,7 @@
 					<span class="sr-only">(Current)</span>
 				</a>
 			</li>
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown active">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<img src="./images/icons/file-earmark-person.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
 					Usuario

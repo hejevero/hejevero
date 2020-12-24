@@ -32,9 +32,9 @@ if(isset($_COOKIE["levelNow"])){
 		</header>
 		<!-- Contenido -->
 		<?php
-			if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
+			if(isset($_GET['bodega']) && $_GET['bodega'] != ""){
 				include("./pages/modules/warehouse.php");
-			}else{
+			}elseif(isset($_GET['gestionar-usuario'])){
 				include("./pages/modules/inicio.php");
 			}
 		?>

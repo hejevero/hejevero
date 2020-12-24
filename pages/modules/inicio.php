@@ -3,7 +3,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="table-primary text-center" colspan="5">Usuarios</th>
+					<th class="table-primary text-center" colspan="6">Usuarios</th>
 				</tr>
 				<tr class="table-primary">
 					<th>Nombre</th>
@@ -11,6 +11,7 @@
 					<th>Usuario</th>
 					<th>Nivel</th>
 					<th>Contraseña</th>
+					<th>Opciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,6 +28,16 @@
 							<th><?php echo $userS['nick_user']; ?></th>
 							<th><?php echo $userS['name_level']; ?></th>
 							<th><?php echo $userS['pass_user']; ?></th>
+							<th class="btn-group" role="group" aria-label="Large button group">
+								<button type="submit" name="modificarUsuario" class="btn btn-secondary">
+									<img src="./images/icons/tools.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Modificar">
+									<div class="d-block d-sm-block d-md-none">Modificar</div>
+								</button>
+								<button type="submit" name="eliminarUsuario" class="btn btn-secondary">
+									<img src="./images/icons/trash.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Eliminar">
+									<div class="d-block d-sm-block d-md-none">Eliminar</div>
+								</button>
+							</th>
 						</tr>
 				<?php
 					//};
