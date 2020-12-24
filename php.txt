@@ -1,1 +1,10 @@
+//vincular clases php a base de datos MYSQLI
 https://codea.app/php/conexion-y-metodos-de-consulta-a-una-bd-mysql
+
+//mostrar u ocultar dependiendo del tamaño del formulario
+https://programadorwebvalencia.com/bootstrap-ocultar-o-mostrar-en-smartphone/
+
+//botones desplegables
+https://getbootstrap.com/docs/4.4/components/dropdowns/
+
+//
