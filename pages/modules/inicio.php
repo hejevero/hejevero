@@ -29,11 +29,11 @@
 							<th><?php echo $userS['name_level']; ?></th>
 							<th><?php echo $userS['pass_user']; ?></th>
 							<th class="btn-group" role="group" aria-label="Large button group">
-								<button type="submit" name="modificarUsuario" class="btn btn-secondary">
+								<button type="submit" name="modificarUsuario" class="btn btn-success">
 									<img src="./images/icons/tools.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Modificar">
 									<div class="d-block d-sm-block d-md-none">Modificar</div>
 								</button>
-								<button type="submit" name="eliminarUsuario" class="btn btn-secondary">
+								<button type="submit" name="eliminarUsuario" class="btn btn-danger">
 									<img src="./images/icons/trash.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Eliminar">
 									<div class="d-block d-sm-block d-md-none">Eliminar</div>
 								</button>

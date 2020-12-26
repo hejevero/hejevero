@@ -3,7 +3,7 @@
 	<span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-	<a class="navbar-brand" href="#">
+	<a class="navbar-brand" href="./">
 		<?php
 		if(isset($_COOKIE["userNow"]) && $_COOKIE["userNow"] != ""){
 			echo($_COOKIE["userNow"]." / ".$_COOKIE["levelNow"]);
@@ -67,7 +67,7 @@
 	?>
 		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 			<li class="nav-item active">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="./">
 					<img src="./images/icons/house-door.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
 					Inicio
 					<span class="sr-only">(Current)</span>

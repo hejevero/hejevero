@@ -51,7 +51,7 @@ class conexion{
 		echo("
 		<html>
 			<head>
-				<meta http-equiv='refresh' content='1; url=http://localhost/hejevero/index.php'>
+				<meta http-equiv='refresh' content='0; url=http://localhost/hejevero/index.php'>
 			</head>
 		</html>
 		");
