@@ -25,6 +25,18 @@
 				</a>
 			</li>
 			<li class="nav-item dropdown active">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="./images/icons/hammer.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Pruebas
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+					<a class="dropdown-item" href="?webpay=true">Webpay</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="">otras</a>
+					<a class="dropdown-item" href="">otras</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown active">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<img src="./images/icons/calendar-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
 					Agregar
@@ -55,22 +67,10 @@
 					Usuario
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-					<a class="dropdown-item" href="#">Perfil</a>
+					<a class="dropdown-item" href="./?perfil=true&id=">Perfil</a>
 					<a class="dropdown-item" href="./?gestionar-usuario=true">Gestionar</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="./process.php?log-out=true">Cerrar sesión</a>
-				</div>
-			</li>
-			<li class="nav-item dropdown active">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<img src="./images/icons/file-earmark-person.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
-					Pruebas
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-					<a class="dropdown-item" href="?webpay=true">Webpay</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="">otras</a>
-					<a class="dropdown-item" href="">otras</a>
 				</div>
 			</li>
 		</ul>

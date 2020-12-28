@@ -34,12 +34,12 @@ if(isset($_COOKIE["levelNow"])){
 		<?php
 			if(isset($_GET['bodega']) && $_GET['bodega'] != ""){
 				include("./pages/modules/warehouse.php");
-			}elseif(isset($_GET['gestionar-usuario']) && $_GET['gestionar-usuario'] == "true"){
+			}elseif(isset($_GET['gestionar-usuario']) || isset($_GET['perfil'])){
 				include("./pages/modules/inicio.php");
 			}elseif(isset($_GET['webpay']) && $_GET['webpay'] == "true"){
 				include("./pages/modules/webpay.php");
 			}else{
-				echo("Error");
+				echo("Error 404");
 			}
 		?>
 	</body>

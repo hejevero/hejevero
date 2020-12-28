@@ -21,23 +21,11 @@ if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 						<input type="text" name="direccionBodega" class="form-control" id="direccion" placeholder="Direcci&oacute;n">
 					</div>
 			</div>
-			<div class="pr-2 pb-2">
-				<div class="float-md-right btn-group-vertical ml-2">
-					<button type="submit" name="agregarBodega">
-						<img src="./images/icons/cart-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Agregar">
+			<div class="container"> 
+				<div class="btn-group float-md-right pb-2" role="group" aria-label="Large button group">
+					<button type="submit" class="btn btn-light btn-sm border" name="agregarBodega">
+						<img src="./images/icons/cloud-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Agregar">
 						<div class="d-block d-sm-block d-md-none">Agregar</div>
-					</button>
-				</div>
-				<div class="float-md-right ml-2">
-					<button type="submit" name="modificarBodega">
-						<img src="./images/icons/tools.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Modificar">
-						<div class="d-block d-sm-block d-md-none">Modificar</div>
-					</button>
-				</div>
-				<div class="float-md-right ml-2">
-					<button type="submit" name="eliminarBodega">
-						<img src="./images/icons/trash.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Eliminar">
-						<div class="d-block d-sm-block d-md-none">Eliminar</div>
 					</button>
 				</div>
 			</div>
@@ -55,23 +43,25 @@ if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 			<div class="card-body pt-1">
 				<?php echo ($value['country_warehause']." / ".$value['city_warehause']." / ".$value['direction_warehause']); ?>
 			</div>
-			<div class="pr-2 pb-2">
-				<div class="float-md-right ml-2">
-					<button type="submit" name="agregarBodega">
-						<img src="./images/icons/cart-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Agregar">
-						<div class="d-block d-sm-block d-md-none">Agregar</div>
+			<div class="container"> 
+				<div class="btn-group float-md-right pb-2" role="group" aria-label="Large button group">
+					<button type="submit" class="btn btn-light btn-sm border" name="agregarBodega">
+						<a href="?producto=bodega&idBodega=<?php echo($value['id_warehause']); ?>">
+							<img src="./images/icons/cart-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Agregar">
+							<div class="d-block d-sm-block d-md-none">Agregar</div>
+						</a>
 					</button>
-				</div>
-				<div class="float-md-right ml-2">
-					<button type="submit" name="modificarBodega">
-						<img src="./images/icons/tools.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Modificar">
-						<div class="d-block d-sm-block d-md-none">Modificar</div>
+					<button type="submit" class="btn btn-light border" name="modificarBodega">
+						<a href="?bodega=modificar&id=<?php echo ($value['id_warehause']); ?>">
+							<img src="./images/icons/tools.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Modificar">
+							<div class="d-block d-sm-block d-md-none">Modificar</div>
+						</a>
 					</button>
-				</div>
-				<div class="float-md-right ml-2">
-					<button type="submit" name="eliminarBodega">
-						<img src="./images/icons/trash.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Eliminar">
-						<div class="d-block d-sm-block d-md-none">Eliminar</div>
+					<button type="submit" class="btn btn-light border" name="eliminarBodega">
+						<a href="?bodega=eliminar&id=<?php echo($value['id_warehause']); ?>">
+							<img src="./images/icons/trash.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Eliminar">
+							<div class="d-block d-sm-block d-md-none">Eliminar</div>
+						</a>
 					</button>
 				</div>
 			</div>
