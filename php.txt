@@ -10,3 +10,6 @@ https://getbootstrap.com/docs/4.4/components/dropdowns/
 //webpay y composer
 https://www.youtube.com/watch?v=fAxWK2C4Buw
 https://www.youtube.com/watch?v=YBy7DlQ-Bws&feature=youtu.be
+
+//repositorio de paquetes
+https://packagist.org/

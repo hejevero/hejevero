@@ -1,0 +1,6 @@
+{
+	"name": "hejevero/hejevero",
+	"require":{
+		"transbank/transbank-sdk" : "^1.10"
+	}
+}

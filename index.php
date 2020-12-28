@@ -20,7 +20,7 @@ if(isset($_COOKIE["levelNow"])){
 		<link href="./css/custom/style.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
 		<script src="./js/jquery.min.js"></script>
-		<script src="./js/popper.min.js"></script>
+		<!--<script src="./js/popper.min.js"></script>-->
 		<script src="./js/bootstrap.min.js"></script>
 	</head>
 	<body class="bg-light">
@@ -34,8 +34,12 @@ if(isset($_COOKIE["levelNow"])){
 		<?php
 			if(isset($_GET['bodega']) && $_GET['bodega'] != ""){
 				include("./pages/modules/warehouse.php");
-			}elseif(isset($_GET['gestionar-usuario'])){
+			}elseif(isset($_GET['gestionar-usuario']) && $_GET['gestionar-usuario'] == "true"){
 				include("./pages/modules/inicio.php");
+			}elseif(isset($_GET['webpay']) && $_GET['webpay'] == "true"){
+				include("./pages/modules/webpay.php");
+			}else{
+				echo("Error");
 			}
 		?>
 	</body>
