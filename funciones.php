@@ -24,7 +24,13 @@ class conexion{
 			$consultaNick = "SELECT * FROM user INNER JOIN level ON user.LEVEL_ID_LEVEL=level.ID_LEVEL WHERE NICK_USER='".$this->nickUser."' AND PASS_USER='".$this->passUser."';";
 			if($resultado = self::buscarPorConsulta($consultaNick)){
 				foreach($resultado as $value){
+					setcookie("idUserNow", $value["id_user"], time()+3600);
+					setcookie("codeNow", $value["code_user"], time()+3600);
 					setcookie("userNow", $value["name_user"], time()+3600);
+					setcookie("lastnameNow", $value["lastname_user"], time()+3600);
+					setcookie("nickNow", $value["nick_user"], time()+3600);
+					setcookie("stateNow", $value["state_user"], time()+3600);
+					setcookie("idLevelNow", $value["level_id_level"], time()+3600);
 					setcookie("levelNow", $value["name_level"], time()+3600);
 				}
 				$this->messagePublic = "Usuario encontrado";
@@ -47,6 +53,7 @@ class conexion{
 			return false;
 		}
 	}
+	
 	public function volverInicio(){
 		echo("
 		<html>

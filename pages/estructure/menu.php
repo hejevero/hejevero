@@ -67,7 +67,7 @@
 					Usuario
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-					<a class="dropdown-item" href="./?perfil=true&id=">Perfil</a>
+					<a class="dropdown-item" href="./?perfil=perfil&id=<?php echo($_COOKIE["idUserNow"]); ?>">Perfil</a>
 					<a class="dropdown-item" href="./?gestionar-usuario=true">Gestionar</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="./process.php?log-out=true">Cerrar sesión</a>
