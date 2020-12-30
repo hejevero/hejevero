@@ -9,6 +9,7 @@ class conexion{
 	private $nickUser;		//getUserNick
 	private $passUser; 		//getUserNick
 	public $messagePublic; 	//mensaje generico
+	public $fechaActual; 	//fecha generica
 	public function __construct($dbserver, $dbuser, $dbpass, $dbname){
 		$this->dbserver = $dbserver;
 		$this->dbuser = $dbuser;
@@ -62,6 +63,9 @@ class conexion{
 			</head>
 		</html>
 		");
+	}
+	public function getActualDate(){
+		
 	}
 }
 ?>

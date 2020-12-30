@@ -20,7 +20,7 @@
 	$formAction = $initResult->url;
 	$tokenWs = $initResult->token;
 	?>
-	<div class="container">
+	<div class="container pt-3">
 		<div class="col-md-6 col-md-offset-3">
 			<h2>Pago con Webpay</h2>
 			<p><b>Valor</b> <?php echo $amount; ?></p>

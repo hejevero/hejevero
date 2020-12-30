@@ -2,7 +2,7 @@
 <?php
 if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 ?>
-	<form method="get" action="./index.php">
+	<form class="pt-3" method="post" action="./process.php?bodega=add">
 		<div class="card w-75 pt-3">
 			<div class="container-fluid pt-3 card-header">
 				<h2 class="panel-title"><input name="nombreBodega" type="text" class="form-control form-control-lg" placeholder="Nombre de Bodega"></h2>
@@ -45,24 +45,24 @@ if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 			</div>
 			<div class="container"> 
 				<div class="btn-group float-md-right pb-2" role="group" aria-label="Large button group">
-					<button type="submit" class="btn btn-light btn-sm border" name="agregarBodega">
-						<a href="?producto=bodega&idBodega=<?php echo($value['id_warehause']); ?>">
+					<a href="?producto=bodega&idBodega=<?php echo($value['id_warehause']); ?>">
+						<button type="submit" class="btn btn-light btn-sm border" name="agregarBodega">
 							<img src="./images/icons/cart-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Agregar">
 							<div class="d-block d-sm-block d-md-none">Agregar</div>
-						</a>
-					</button>
-					<button type="submit" class="btn btn-light border" name="modificarBodega">
-						<a href="?bodega=modificar&id=<?php echo ($value['id_warehause']); ?>">
+						</button>
+					</a>
+					<a href="?bodega=modificar&id=<?php echo ($value['id_warehause']); ?>">
+						<button type="submit" class="btn btn-light border" name="modificarBodega">
 							<img src="./images/icons/tools.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Modificar">
 							<div class="d-block d-sm-block d-md-none">Modificar</div>
-						</a>
-					</button>
-					<button type="submit" class="btn btn-light border" name="eliminarBodega">
-						<a href="?bodega=eliminar&id=<?php echo($value['id_warehause']); ?>">
+						</button>
+					</a>
+					<a href="?bodega=eliminar&id=<?php echo($value['id_warehause']); ?>">
+						<button type="submit" class="btn btn-light border" name="eliminarBodega">
 							<img src="./images/icons/trash.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Eliminar">
 							<div class="d-block d-sm-block d-md-none">Eliminar</div>
-						</a>
-					</button>
+						</button>
+					</a>
 				</div>
 			</div>
 		</div>
