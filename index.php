@@ -36,8 +36,8 @@ if(isset($_COOKIE["levelNow"])){
 				include("./pages/modules/warehouse.php");
 			}elseif(isset($_GET['gestionar-usuario']) || isset($_GET['perfil'])){
 				include("./pages/modules/inicio.php");
-			}elseif(isset($_GET['webpay']) && $_GET['webpay'] == "true"){
-				include("./pages/modules/webpay.php");
+			}elseif(isset($_GET['test']) && $_GET['test'] != ""){
+				include("./test/".$_GET['test'].".php");
 			}else{
 				echo("Error 404");
 			}

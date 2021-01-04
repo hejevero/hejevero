@@ -30,36 +30,57 @@
 					Pruebas
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-					<a class="dropdown-item" href="?webpay=true">Webpay</a>
+					<a class="dropdown-item" href="?test=webpay">Webpay</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="">otras</a>
-					<a class="dropdown-item" href="">otras</a>
+					<a class="dropdown-item" href="?test=navbar">Navbar</a>
+					<a class="dropdown-item" href="?test=phpinfo">Info</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown active">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<img src="./images/icons/calendar-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
-					Agregar
+					Opciones
 				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown0">
-					<a class="dropdown-item" href="#">Usuarios</a>
-					<a class="dropdown-item" href="#">Cargos</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Bodegas</a>
-					<a class="dropdown-item" href="#">Producto</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Permisos</a>
-				</div>
-			</li>
-			<li class="nav-item dropdown active">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<img src="./images/icons/card-checklist.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
-					Bodegas
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-					<a class="dropdown-item" href="./?bodega=agregar">Agregar</a>
-					<a class="dropdown-item" href="./?bodega=gestionar">Gestionar</a>
-				</div>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown0">
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Usuarios</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Agregar</a></li>
+							<li><a class="dropdown-item" href="#">Gestionar</a></li>
+						</ul>
+					</li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Cargos</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Modificar</a></li>
+							<li><a class="dropdown-item" href="#">Gestionar</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-divider"></li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Bodegas</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="./?bodega=agregar">Agregar</a></li>
+							<li><a class="dropdown-item" href="./?bodega=gestionar">Gestionar</a></li>
+						</ul>
+					</li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Producto</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Agregar</a></li>
+							<li><a class="dropdown-item" href="#">Modificar</a></li>
+							<li><a class="dropdown-item" href="#">Buscar</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-divider"></li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Permisos</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Asociar</a></li>
+							<li><a class="dropdown-item" href="#">Gestionar</a></li>
+						</ul>
+					</li>
+				</ul>
 			</li>
 			<li class="nav-item dropdown active">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -100,10 +121,6 @@
 	<?php
 	}
 	?>
-	<form class="form-inline my-2 my-lg-0">
-		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
-	</form>
 </div>
 </nav>
 <!--Codigo formulario sobre puesto para inciar sesion-->
@@ -136,3 +153,16 @@
 		</div>
 	</div>
 </div>
+<script id="rendered-js">
+$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+	if (!$(this).next().hasClass('show')) {
+		$(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+	}
+	var $subMenu = $(this).next(".dropdown-menu");
+	$subMenu.toggleClass('show');
+	$(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+		$('.dropdown-submenu .show').removeClass("show");
+	});
+	return false;
+});
+</script>

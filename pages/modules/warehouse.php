@@ -36,6 +36,7 @@ if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 	if($resultado = $user->buscarPorConsulta("SELECT * FROM warehause WHERE state_warehause>=1")){
 		foreach($resultado as $value){
 	?>
+		<form class="pt-3">
 		<div class="card w-75 pt-3">
 			<div class="container-fluid pt-3 card-header">
 				<h2 class="panel-title"><?php echo ($value['name_warehause']); ?></h2>
@@ -66,6 +67,7 @@ if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 				</div>
 			</div>
 		</div>
+		</form>
 	<?php
 		}
 	}

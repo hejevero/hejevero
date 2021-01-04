@@ -28,6 +28,12 @@
 				</div>
 			</div>
 			<div class="form-group row">
+				<label for="inputPass" class="col-sm-2 col-form-label">Antigua Contraseña</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputPass" placeholder="Contraseña">
+				</div>
+			</div>
+			<div class="form-group row">
 				<label for="inputPass" class="col-sm-2 col-form-label">Contraseña</label>
 				<div class="col-sm-10">
 					<input type="password" class="form-control" id="inputPass" placeholder="Contraseña">

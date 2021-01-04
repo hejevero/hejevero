@@ -77,3 +77,21 @@
 	display: inline-block;
 	margin: 100px auto;
 }}*/
+.dropdown-submenu {
+  position: relative; 
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: inline-block;
+  right: 6px;
+  top: 1.3em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0 !important;
+  left: 100% !important;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  display: block !important;
+}
