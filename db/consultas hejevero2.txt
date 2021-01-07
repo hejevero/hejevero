@@ -1,0 +1,45 @@
+-- -------------- --
+-- Table function --
+-- -------------- --
+INSERT INTO function (Id_fun,Nam_fun,Sta_fun) VALUES ('1','Ver','1');
+INSERT INTO function (Id_fun,Nam_fun,Sta_fun) VALUES ('2','Agregar','2');
+INSERT INTO function (Id_fun,Nam_fun,Sta_fun) VALUES ('3','Modificar','3');
+INSERT INTO function (Id_fun,Nam_fun,Sta_fun) VALUES ('4','Eliminar','4');
+
+-- ----------- --
+-- Table level --
+-- ----------- --
+insert into level (Id_level,Nam_level,Sta_level) VALUES ('1','God','1');
+insert into level (Id_level,Nam_level,Sta_level) VALUES ('2','Administrador','2');
+insert into level (Id_level,Nam_level,Sta_level) VALUES ('3','Supervisor','3');
+insert into level (Id_level,Nam_level,Sta_level) VALUES ('4','Vendedor','4');
+insert into level (Id_level,Nam_level,Sta_level) VALUES ('5','Cliente','5');
+insert into level (Id_level,Nam_level,Sta_level) VALUES ('6','Usuario','6');
+
+-- ---------- --
+-- Table user
+-- ---------- --
+INSERT INTO user (Id_user,Cod_user,Nam_user,Lasn_user,Nick_user,Pass_user,Dat_user,Sta_user) VALUES ('1','god1','Helmo','Velasquez','hejevero','Hejevero1993','06-01-2021','1');
+INSERT INTO user (Id_user,Cod_user,Nam_user,Lasn_user,Nick_user,Pass_user,Dat_user,Sta_user) VALUES ('2','adm1','Adminitrador','Principal','admin','admin','06-01-2021','1');
+
+-- ------------ --
+-- Table system --
+-- ------------ --
+INSERT INTO system (Id_sys,State_sys,user_Id_user,level_Id_level) VALUES ('1','2','1','1');
+INSERT INTO system (Id_sys,State_sys,user_Id_user,level_Id_level) VALUES ('2','1','1','2');
+
+-- --------------- --
+-- Table warehouse --
+-- --------------- --
+INSERT INTO warehouse (Id_wh,Cod_wh,Name_wh,Dat_wh,Cou_wh,Cit_wh,Dir_wh,Sta_wh) VALUES ('1','gino1','Gino Rodinis Ripley','06-01-2021','Chile','La Serena','Gregorio Cordovez 499','1');
+INSERT INTO warehouse (Id_wh,Cod_wh,Name_wh,Dat_wh,Cou_wh,Cit_wh,Dir_wh,Sta_wh) VALUES ('2','gino2','Gino Rodinis Falabella','06-01-2021','Chile','La Serena','Alberto Solari 1400','1');
+
+-- -------------------- --
+-- level_user_warehouse --
+-- -------------------- --
+INSERT INTO level_user_warehouse (Id_luw,Sta_luw,user_Id_user,level_Id_level,warehouse_Id_wh) VALUES ('1','1','1','1','1');
+INSERT INTO level_user_warehouse (Id_luw,Sta_luw,user_Id_user,level_Id_level,warehouse_Id_wh) VALUES ('2','1','2','2','1');
+INSERT INTO level_user_warehouse (Id_luw,Sta_luw,user_Id_user,level_Id_level,warehouse_Id_wh) VALUES ('3','1','1','1','2');
+INSERT INTO level_user_warehouse (Id_luw,Sta_luw,user_Id_user,level_Id_level,warehouse_Id_wh) VALUES ('4','1','2','2','2');
+
+

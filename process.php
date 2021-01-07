@@ -1,6 +1,6 @@
 <?php
 include("./funciones.php");
-$user = new conexion("localhost", "root", "", "hejevero");
+$user = new conexion("localhost", "root", "", "hejevero2");
 if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] != ""){
 	$user->getUserNick($_POST['username'], $_POST['password']);
 	//echo($user->messagePublic);

@@ -2,7 +2,7 @@
 session_start();
 //include("./conexion.php");
 include('./funciones.php');
-$user = new conexion("localhost", "root", "", "hejevero");
+$user = new conexion("localhost", "root", "", "hejevero2");
 if(isset($_COOKIE["levelNow"])){
 	$levelNow = $_COOKIE["levelNow"];
 }else{
