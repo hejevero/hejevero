@@ -22,17 +22,22 @@ class conexion{
 		$this->nickUser = $nickUser;
 		$this->passUser = $passUser;
 		try{
-			$consultaNick = "SELECT * FROM user INNER JOIN level ON user.LEVEL_ID_LEVEL=level.ID_LEVEL WHERE NICK_USER='".$this->nickUser."' AND PASS_USER='".$this->passUser."';";
+			$consultaNick = "SELECT * FROM user 
+							INNER JOIN system 
+							ON user.Id_user=system.user_Id_user 
+							INNER JOIN level
+							ON system.level_Id_level=level.Id_level
+							WHERE Nick_user='".$this->nickUser."' AND Pass_user='".$this->passUser."';";
 			if($resultado = self::buscarPorConsulta($consultaNick)){
 				foreach($resultado as $value){
-					setcookie("idUserNow", $value["id_user"], time()+3600);
-					setcookie("codeNow", $value["code_user"], time()+3600);
-					setcookie("userNow", $value["name_user"], time()+3600);
-					setcookie("lastnameNow", $value["lastname_user"], time()+3600);
-					setcookie("nickNow", $value["nick_user"], time()+3600);
-					setcookie("stateNow", $value["state_user"], time()+3600);
-					setcookie("idLevelNow", $value["level_id_level"], time()+3600);
-					setcookie("levelNow", $value["name_level"], time()+3600);
+					setcookie("idUserNow", $value["Id_user"], time()+3600);
+					setcookie("codeNow", $value["Cod_user"], time()+3600);
+					setcookie("userNow", $value["Nam_user"], time()+3600);
+					setcookie("lastnameNow", $value["Lasn_user"], time()+3600);
+					setcookie("nickNow", $value["Nick_user"], time()+3600);
+					setcookie("stateNow", $value["Sta_user"], time()+3600);
+					setcookie("idLevelNow", $value["Id_level"], time()+3600);
+					setcookie("levelNow", $value["Nam_level"], time()+3600);
 				}
 				$this->messagePublic = "Usuario encontrado";
 			}else{

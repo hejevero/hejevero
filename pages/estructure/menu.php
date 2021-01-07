@@ -14,7 +14,7 @@
 	</a>
 	<?php
 	//Usuario General/Cliente
-	if($levelNow == "Administrador"){
+	if($levelNow == "God	"){
 		?>
 		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 			<li class="nav-item active">
