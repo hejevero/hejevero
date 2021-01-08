@@ -33,33 +33,34 @@ if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 	</form>
 	<?php
 }elseif(isset($_GET['bodega']) && $_GET['bodega'] == "gestionar"){
-	if($resultado = $user->buscarPorConsulta("SELECT * FROM warehause WHERE state_warehause>=1")){
+	if($resultado = $user->buscarPorConsulta("SELECT * FROM warehouse 
+											WHERE Sta_wh>=1")){
 		foreach($resultado as $value){
 	?>
 		<form class="pt-3">
 		<div class="card w-75 pt-3">
 			<div class="container-fluid pt-3 card-header">
-				<h2 class="panel-title"><?php echo ($value['name_warehause']); ?></h2>
+				<h2 class="panel-title"><?php echo ($value['Name_wh']); ?></h2>
 			</div>
 			<div class="card-body pt-1">
-				<?php echo ($value['country_warehause']." / ".$value['city_warehause']." / ".$value['direction_warehause']); ?>
+				<?php echo ($value['Cou_wh']." / ".$value['Cit_wh']." / ".$value['Dir_wh']); ?>
 			</div>
 			<div class="container"> 
 				<div class="btn-group float-md-right pb-2" role="group" aria-label="Large button group">
-					<a href="?producto=bodega&idBodega=<?php echo($value['id_warehause']); ?>">
-						<button type="submit" class="btn btn-light btn-sm border" name="agregarBodega">
+					<a href="?producto=bodega&idBodega=<?php echo($value['Id_wh']); ?>">
+						<button type="button" class="btn btn-light border" name="agregarBodega">
 							<img src="./images/icons/cart-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Agregar">
 							<div class="d-block d-sm-block d-md-none">Agregar</div>
 						</button>
 					</a>
-					<a href="?bodega=modificar&id=<?php echo ($value['id_warehause']); ?>">
-						<button type="submit" class="btn btn-light border" name="modificarBodega">
+					<a href="?bodega=modificar&id=<?php echo ($value['Id_wh']); ?>">
+						<button type="button" class="btn btn-light border" name="modificarBodega">
 							<img src="./images/icons/tools.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Modificar">
 							<div class="d-block d-sm-block d-md-none">Modificar</div>
 						</button>
 					</a>
-					<a href="?bodega=eliminar&id=<?php echo($value['id_warehause']); ?>">
-						<button type="submit" class="btn btn-light border" name="eliminarBodega">
+					<a href="?bodega=eliminar&id=<?php echo($value['Id_wh']); ?>">
+						<button type="button" class="btn btn-light border" name="eliminarBodega">
 							<img src="./images/icons/trash.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Eliminar">
 							<div class="d-block d-sm-block d-md-none">Eliminar</div>
 						</button>
@@ -71,6 +72,8 @@ if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 	<?php
 		}
 	}
+}else{
+	echo("Error");
 }
 	?>
 </section>

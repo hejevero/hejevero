@@ -13,3 +13,10 @@ https://www.youtube.com/watch?v=YBy7DlQ-Bws&feature=youtu.be
 
 //repositorio de paquetes
 https://packagist.org/
+
+//gradient/degradado css
+https://cssgradient.io/
+
+//sombras css
+https://www.cssmatic.com/es/box-shadow
+

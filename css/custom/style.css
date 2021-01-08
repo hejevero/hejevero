@@ -1,3 +1,11 @@
+/* codigo propio */
+.bg-gradient-menu{
+	background: rgb(68,68,69);
+	background: linear-gradient(0deg, rgba(68,68,69,1) 0%, rgba(85,85,87,1) 18%, rgba(109,109,111,1) 40%, rgba(165,166,166,1) 100%);
+	-webkit-box-shadow: 10px 10px 7px -1px rgba(0,0,0,0.26);
+	-moz-box-shadow: 10px 10px 7px -1px rgba(0,0,0,0.26);
+	box-shadow: 10px 10px 7px -1px rgba(0,0,0,0.26);
+}
 /*Codigo estilo formulario inicio de sesion*/
 .modal-login{
 	color: #636363;

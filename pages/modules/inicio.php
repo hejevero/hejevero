@@ -63,7 +63,8 @@
 												ON user.Id_user=system.user_Id_user
 												INNER JOIN level
 												ON system.level_Id_level=level.Id_level
-												WHERE Id_user=".$_GET['id'].";")){
+												WHERE Id_user=".$_GET['id']."
+												Limit 1;")){
 			foreach($resultado as $userS){
 	?>
 		<form action="./process.php" method="post" class="pt-3">
