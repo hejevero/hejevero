@@ -6,7 +6,7 @@ $user = new conexion("localhost", "root", "", "hejevero2");
 if(isset($_COOKIE["levelNow"])){
 	$levelNow = $_COOKIE["levelNow"];
 }else{
-	$levelNow = "";
+	$levelNow = "inactivo";
 }
 ?>
 <!DOCTYPE html>

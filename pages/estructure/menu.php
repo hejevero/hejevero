@@ -14,7 +14,7 @@
 	</a>
 	<?php
 	//Usuario General/Cliente
-	if($levelNow == "God	"){
+	if($levelNow == "God"){
 		?>
 		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 			<li class="nav-item active">
@@ -96,7 +96,77 @@
 			</li>
 		</ul>
 		<?php
-	}elseif($levelNow == ""){
+	}elseif($levelNow != "inactivo"){
+		?>
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item active">
+				<a class="nav-link" href="./">
+				<img src="./images/icons/house-door.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+				Inicio
+				<span class="sr-only">(Current)</span>
+				</a>
+			</li>
+			<li class="nav-item dropdown active">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="./images/icons/calendar-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Opciones
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown0">
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Usuarios</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Agregar</a></li>
+							<li><a class="dropdown-item" href="#">Gestionar</a></li>
+						</ul>
+					</li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Cargos</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Modificar</a></li>
+							<li><a class="dropdown-item" href="#">Gestionar</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-divider"></li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Bodegas</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="./?bodega=agregar">Agregar</a></li>
+							<li><a class="dropdown-item" href="./?bodega=gestionar">Gestionar</a></li>
+						</ul>
+					</li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Producto</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Agregar</a></li>
+							<li><a class="dropdown-item" href="#">Modificar</a></li>
+							<li><a class="dropdown-item" href="#">Buscar</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-divider"></li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Permisos</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Asociar</a></li>
+							<li><a class="dropdown-item" href="#">Gestionar</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="nav-item dropdown active">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="./images/icons/file-earmark-person.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Usuario
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+					<a class="dropdown-item" href="./?perfil=perfil&id=<?php echo($_COOKIE["idUserNow"]); ?>">Perfil</a>
+					<a class="dropdown-item" href="./?gestionar-usuario=true">Gestionar</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="./process.php?log-out=true">Cerrar sesión</a>
+				</div>
+			</li>
+		</ul>
+		<?php
+	}elseif($levelNow == "inactivo"){
 	?>
 		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 			<li class="nav-item active">
