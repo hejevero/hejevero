@@ -14,9 +14,38 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	}else{
 		$user->volverInicio();
 	}
-}elseif(isset($_GET['bodega'])){
-	if($_GET['bodega'] == "add"){
-		echo("agregar bodega");
+}elseif(isset($_POST['agregarBodega'])){
+	if(isset($_POST['agregarBodega'])){
+		//calcular id nuevo
+		if($resID = $user->totalIdConsulta("warehouse")){
+			foreach($resID as $totalId){
+				$nuevoId = $totalId['total'] + 1;
+			}
+		}
+		//fecha
+		$user->getActDate();
+		$fechaActual = $user->dateDDMMYY." ".$user->actualTime;
+		//variables y constsntes
+		if($nuevoId < 10){
+			$codigo = $_POST['ciudadBodega']."00".$nuevoId;
+		}elseif($nuevoId > 9 && $nuevoId < 100){
+			$codigo = $_POST['ciudadBodega']."0".$nuevoId;
+		}else{
+			$codigo = $_POST['ciudadBodega'].$nuevoId;
+		}
+		$pais = "Chile";
+		$estado = $_COOKIE["idUserNow"];
+		//Salida
+		$consultaBodega = "INSERT INTO warehouse 
+							(Id_wh,Cod_wh,Name_wh,Dat_wh,Cou_wh,Cit_wh,Dir_wh,Sta_wh) 
+							VALUES 
+							(".$nuevoId.",'".$codigo."','".$_POST['nombreBodega']."','".$fechaActual."','".$pais."','".$_POST['ciudadBodega']."','".$_POST['direccionBodega']."','".$estado."');";
+		$nuevaBodega = $user->insertarPorConsulta($consultaBodega);
+		if($nuevaBodega){
+			$user->volverInicio();
+		}else{
+			echo ("Error en la consulta");
+		}
 	}else{
 		$user->volverInicio();
 	}

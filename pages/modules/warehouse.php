@@ -2,7 +2,7 @@
 <?php
 if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 ?>
-	<form class="pt-3" method="post" action="./process.php?bodega=add">
+	<form class="pt-3" method="post" action="./process.php?bodega=add&">
 		<div class="card w-75 pt-3">
 			<div class="container-fluid pt-3 card-header">
 				<h2 class="panel-title"><input name="nombreBodega" type="text" class="form-control form-control-lg" placeholder="Nombre de Bodega"></h2>

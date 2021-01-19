@@ -9,7 +9,14 @@ class conexion{
 	private $nickUser;		//getUserNick
 	private $passUser; 		//getUserNick
 	public $messagePublic; 	//mensaje generico
-	public $fechaActual; 	//fecha generica
+	public $actualDay; 		//getActDate
+	public $actualMonth; 	//getActDate
+	public $actualYear; 	//getActDate
+	public $dateDDMMYY; 	//getActDate
+	public $dateYYMMDD; 	//getActDate
+	public $dateMMDDYY; 	//getActDate
+	public $actualWeek; 	//getActDate
+	public $actualTime; 	//getActDate
 	public function __construct($dbserver, $dbuser, $dbpass, $dbname){
 		$this->dbserver = $dbserver;
 		$this->dbuser = $dbuser;
@@ -52,14 +59,43 @@ class conexion{
 		}
 		return false;
 	}
+	public function getActDate(){
+		date_default_timezone_set("America/Santiago");
+		$this->actualDay 		= date("d");
+		$this->actualMonth 		= date("m");
+		$this->actualYear 		= date("y");
+		$this->dateDDMMYY 		= date("d-m-y");
+		$this->dateYYMMDD 		= date("y-m-d");
+		$this->dateMMDDYY 		= date("m-d-y");
+		$this->actualWeek 		= date("W");
+		$this->actualTime 		= date("H:i:s");
+	}
+	public function totalIdConsulta($tabla){
+		$resID = $this->conexion->query("SELECT COUNT(*) AS 'total' FROM ".$tabla) or die($this->conexion->error);
+		if($resID){
+			return $resID->fetch_all(MYSQLI_ASSOC);
+			return false;
+		}
+	}
 	public function buscarPorConsulta($consulta){
-		$resultado = $this->conexion->query($consulta);
+		$resultado = $this->conexion->query($consulta) or die($this->conexion->error);
 		if($resultado){
 			return $resultado->fetch_all(MYSQLI_ASSOC);
 			return false;
 		}
 	}
-	
+	public function insertarPorConsulta($consulta){
+		$resINS = $this->conexion->query($consulta) or die($this->conexion->error);
+		if($resINS){
+			$this->messagePublic = "Nuevo registro sin problemas";
+			return true;
+		}else{
+			$this->messagePublic = "Registro no ingresada";
+			return true;
+		}
+		$messagePublic = $this->messagePublic;
+		return false;
+	}
 	public function volverInicio(){
 		echo("
 		<html>
