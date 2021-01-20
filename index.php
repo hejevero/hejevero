@@ -38,6 +38,8 @@ if(isset($_COOKIE["levelNow"])){
 				include("./pages/modules/inicio.php");
 			}elseif(isset($_GET['test']) && $_GET['test'] != ""){
 				include("./test/".$_GET['test'].".php");
+			}elseif(isset($_GET['producto'])){
+				include("./pages/modules/ficha.php");
 			}else{
 				echo("Error 404");
 			}

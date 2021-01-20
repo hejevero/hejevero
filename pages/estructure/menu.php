@@ -49,13 +49,6 @@
 							<li><a class="dropdown-item" href="#">Gestionar</a></li>
 						</ul>
 					</li>
-					<li class="dropright">
-						<a class="dropdown-item dropdown-toggle" href="#">Cargos</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Modificar</a></li>
-							<li><a class="dropdown-item" href="#">Gestionar</a></li>
-						</ul>
-					</li>
 					<li class="dropdown-divider"></li>
 					<li class="dropright">
 						<a class="dropdown-item dropdown-toggle" href="#">Bodegas</a>
@@ -77,6 +70,41 @@
 						<a class="dropdown-item dropdown-toggle" href="#">Permisos</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="#">Asociar</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="nav-item dropdown active">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="./images/icons/calendar-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Mantenedores
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Usuarios</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Cargos</a></li>
+							<li><a class="dropdown-item" href="#">Historial</a></li>
+						</ul>
+					</li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Cargos</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Agregar</a></li>
+							<li><a class="dropdown-item" href="#">Gestionar</a></li>
+						</ul>
+					</li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Producto</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Familia</a></li>
+							<li><a class="dropdown-item" href="#">Agregar</a></li>
+							<li><a class="dropdown-item" href="#">Buscar</a></li>
+						</ul>
+					</li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Permisos</a>
+						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="#">Gestionar</a></li>
 						</ul>
 					</li>
