@@ -22,6 +22,11 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 				$nuevoId = $totalId['total'] + 1;
 			}
 		}
+		if($resIdUser = $user->totalIdConsulta("level_user_warehouse")){
+			foreach($resIdUser as $totalIdUser){
+				$nuevoIdUser = $totalIdUser['total'] + 1;
+			}
+		}
 		//fecha
 		$user->getActDate();
 		$fechaActual = $user->dateDDMMYY." ".$user->actualTime;
@@ -39,9 +44,17 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		$consultaBodega = "INSERT INTO warehouse 
 							(Id_wh,Cod_wh,Name_wh,Dat_wh,Cou_wh,Cit_wh,Dir_wh,Sta_wh) 
 							VALUES 
-							(".$nuevoId.",'".$codigo."','".$_POST['nombreBodega']."','".$fechaActual."','".$pais."','".$_POST['ciudadBodega']."','".$_POST['direccionBodega']."','".$estado."');";
+							(".$nuevoId.",'".$codigo."','".$_POST['nombreBodega']."','".$fechaActual."','".$pais."','".$_POST['ciudadBodega']."','".$_POST['direccionBodega']."','".$estado."');
+							";
 		$nuevaBodega = $user->insertarPorConsulta($consultaBodega);
-		if($nuevaBodega){
+		$consultaUserBodega = "
+								INSERT INTO level_user_warehouse
+								(Id_luw,Sta_luw,user_Id_user,level_Id_level,warehouse_Id_wh) 
+								VALUES 
+								('".$nuevoIdUser."','1','".$_COOKIE["idUserNow"]."','2','".$nuevoId."');
+								";
+		$nuevoUserBodega = $user->insertarPorConsulta($consultaUserBodega);
+		if($nuevaBodega && $nuevoUserBodega){
 			$user->volverInicio();
 		}else{
 			echo ("Error en la consulta");

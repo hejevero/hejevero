@@ -53,8 +53,8 @@
 					<li class="dropright">
 						<a class="dropdown-item dropdown-toggle" href="#">Bodegas</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="./?bodega=agregar">Agregar</a></li>
 							<li><a class="dropdown-item" href="./?bodega=gestionar">Gestionar</a></li>
+							<li><a class="dropdown-item" href="#">Agregado rapido</a></li>
 						</ul>
 					</li>
 					<li class="dropright">
@@ -92,6 +92,12 @@
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="#">Agregar</a></li>
 							<li><a class="dropdown-item" href="#">Gestionar</a></li>
+						</ul>
+					</li>
+					<li class="dropright">
+						<a class="dropdown-item dropdown-toggle" href="#">Bodegas</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="./?bodega=agregar">Agregar</a></li>
 						</ul>
 					</li>
 					<li class="dropright">
