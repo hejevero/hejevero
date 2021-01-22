@@ -27,40 +27,66 @@
 				<?php
 			}
 			?>
-			<form>
-				<table class="table-responsive">
-					<thead>
-						<tr>
-							<th colspan="2" class="table-primary text-center">Datos del producto</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="form-group row">
-							<th><label for="nomProd" class="col-sm-2 col-form-label">Nombre</label></th>
-							<th><input class="col-sm-10" type="text" name="nomProd" id="nomProd" placeholder="Ingrese nombre"/></th>
-						</tr>
-						<tr>
-							<th>Codigo</th>
-							<th><input class="rounded" type="text" name="codProd" placeholder="Ingrese codigo"/></th>
-						</tr>
-						<tr>
-							<th>Part Number</th>
-							<th><input class="rounded" type="text" name="parnumProd" placeholder="Ingrese part number"/></th>
-						</tr>
-						<tr>
-							<th>Detalles</th>
-							<th><input class="rounded" type="text" name="detProd" placeholder="Ingrese nombre"/></th>
-						</tr>
-						<tr>
-							<th>Stock</th>
-							<th><input class="rounded" type="text" name="stockProd" placeholder="Ingrese Stock"/></th>
-						</tr>
-						<tr>
-							<th>Precio</th>
-							<th><input class="rounded" type="text" name="precioProd" placeholder="Ingrese precio"/></th>
-						</tr>
-					</tbody>
-				</table>
+			<form method="post" action="./process.php">
+				<div class="container text-center pb-3">
+					Datos del producto
+				</div>
+				<div class="form-group row">
+					<label for="codProd" class="col-sm-2 col-form-label">Codigo</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" name="codProd" id="codProd" placeholder="Ej: 000000" maxlength="45"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="parnumProd" class="col-sm-2 col-fom-label">PartNumber</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" name="parnumProd" id="parnumProd" placeholder="Ej: prodxxxxx" maxlength="45"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="nomProd" class="col-sm-2 col-form-label">Nombre*</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" name="nomProd" id="nomProd" placeholder="Ej: Monitor 22'" maxlength="45"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="modProd" class="col-sm-2 col-form-label">Modelo</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" name="modProd" id="modProd" placeholder="Ej: abc123"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="fabProd" class="col-sm-2 col-form-label">Fabricante</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" name="fabProd" id="fabProd" placeholder="Ej: Samsung"/>
+					</div>
+				</div>
+				<div class="input-group pb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">Detalles</span>
+					</div>
+					<textarea class="form-control" id="detProd" name="detProd" aria-label="Detalles" placeholder="Puede ingresar detalles del producto no publicos" maxlength="300"></textarea>
+				</div>
+				<div class="form-group row">
+					<label for="stockProd" class="col-sm-2 col-form-label">Stock*</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="number" min="0" step="1" name="stockProd" id="stockProd" placeholder="0" maxlength="45"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="precioProd" class="col-sm-2 col-form-label">Precio</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="number" min="0" step="1" name="precioProd" id="precioProd" placeholder="0" maxlength="45"/>
+					</div>
+				</div>
+				<div class="container text-center"> 
+					<div class="btn-group pt-3" role="group" aria-label="Large button group">
+						<button type="submit" class="btn btn-light btn-sm border" name="agregarProd" id="agregarProd">
+							<img src="./images/icons/cloud-plus.svg" width="50" height="50" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Agregar">
+							<div class="d-block d-sm-block d-md-none">Agregar</div>
+						</button>
+					</div>
+				</div>
 			</form>
 			<?php
 		}else{

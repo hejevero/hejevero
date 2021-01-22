@@ -17,6 +17,7 @@ class conexion{
 	public $dateMMDDYY; 	//getActDate
 	public $actualWeek; 	//getActDate
 	public $actualTime; 	//getActDate
+	public $total;
 	public function __construct($dbserver, $dbuser, $dbpass, $dbname){
 		$this->dbserver = $dbserver;
 		$this->dbuser = $dbuser;
@@ -75,6 +76,9 @@ class conexion{
 		if($resID){
 			return $resID->fetch_all(MYSQLI_ASSOC);
 			return false;
+		}else{
+			$total = 0;
+			return $total;
 		}
 	}
 	public function buscarPorConsulta($consulta){

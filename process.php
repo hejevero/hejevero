@@ -62,7 +62,50 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	}else{
 		$user->volverInicio();
 	}
+}elseif(isset($_POST["agregarProd"])){
+	//calcular nuevo id
+	if($resIdProd = $user->totalIdConsulta("product")){
+		foreach($resIdProd as $totalIdProd){
+			$nuevoIdProd = $totalIdProd['total'] + 1;
+		}
+	}
+	if(isset($_POST["precioProd"])){
+		if($_POST["precioProd"] != ""){
+			if($resIdPrecio = $user->totalIdConsulta("price")){
+				foreach($resIdPrecio as $totalIdPrecio){
+					$nuevoIdPrecio = $totalIdPrecio['total'] + 1;
+					$ingresarPrecio = true;
+				}
+			}
+		}
+	}
+	//variables y constantes
+	$user->getActDate();
+	$fechaActual = $user->dateDDMMYY." ".$user->actualTime;
+	echo("producto ("
+		.$nuevoIdProd." / "
+		.$_POST["codProd"]." / "
+		.$_POST["parnumProd"]." / "
+		.$_POST["nomProd"]." / "
+		.$_POST["modProd"]." / "
+		.$_POST["fabProd"]." / "
+		.$_POST["detProd"]." / "
+		.$fechaActual." / "
+		.$_POST["stockProd"]." / 
+		1); </br>
+	");
+	if($ingresarPrecio == true){
+		echo("precio ("
+			.$nuevoIdPrecio." / 
+			original / "
+			.$fechaActual." / "
+			.$fechaActual." / "
+			.$_POST["precioProd"]."
+			 / 1 / "
+			.$nuevoIdProd."
+		");
+	}
 }else{
-	echo("Error");
+	echo("Error sin ingresos");
 }
 ?>
