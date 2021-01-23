@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("./funciones.php");
 $user = new conexion("localhost", "root", "", "hejevero2");
 if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] != ""){
@@ -63,6 +64,10 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		$user->volverInicio();
 	}
 }elseif(isset($_POST["agregarProd"])){
+	$ingresarPrecio = false;
+	$_SESSION["totalPrecio"] = 0;
+	$_SESSION["cantidadPrecio"] = 0;
+	$_SESSION["stockTotalPrecio"] = 0;
 	//calcular nuevo id
 	if($resIdProd = $user->totalIdConsulta("product")){
 		foreach($resIdProd as $totalIdProd){
@@ -77,6 +82,11 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 					$ingresarPrecio = true;
 				}
 			}
+		}
+	}
+	if($resIdAlm = $user->totalIdConsulta("storage_product")){
+		foreach($resIdAlm as $totalIdAlm){
+			$nuevoIdAlm = $totalIdAlm['total'] + 1;
 		}
 	}
 	//variables y constantes
@@ -95,6 +105,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		1); </br>
 	");
 	if($ingresarPrecio == true){
+		$_SESSION["totalPrecio"] = $_POST["precioProd"];
 		echo("precio ("
 			.$nuevoIdPrecio." / 
 			original / "
@@ -102,9 +113,20 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 			.$fechaActual." / "
 			.$_POST["precioProd"]."
 			 / 1 / "
-			.$nuevoIdProd."
+			.$nuevoIdProd."); </br>
 		");
 	}
+	echo("almacenamiento("
+	.$nuevoIdAlm." / "
+	.$fechaActual." / 
+	Sin detalles / "
+	.$_SESSION["totalPrecio"]." / "
+	.$_SESSION["cantidadPrecio"]." / "
+	.$_SESSION["stockTotalPrecio"]." / "
+	.$_POST["bodProd"]." / 
+	1);
+	");
+	$_SESSION["totalPrecio"] = 0;
 }else{
 	echo("Error sin ingresos");
 }
