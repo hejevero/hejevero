@@ -92,41 +92,87 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	//variables y constantes
 	$user->getActDate();
 	$fechaActual = $user->dateDDMMYY." ".$user->actualTime;
-	echo("producto ("
-		.$nuevoIdProd." / "
-		.$_POST["codProd"]." / "
-		.$_POST["parnumProd"]." / "
-		.$_POST["nomProd"]." / "
-		.$_POST["modProd"]." / "
-		.$_POST["fabProd"]." / "
-		.$_POST["detProd"]." / "
-		.$fechaActual." / "
-		.$_POST["stockProd"]." / 
-		1); </br>
-	");
+	$queryProd = "INSERT INTO product
+				VALUES (
+				'".$nuevoIdProd."',
+				'".$_POST["codProd"]."',
+				'".$_POST["parnumProd"]."',
+				'".$_POST["nomProd"]."',
+				'".$_POST["modProd"]."',
+				'".$_POST["fabProd"]."',
+				'".$_POST["detProd"]."',
+				'".$fechaActual."',
+				'".$_POST["stockProd"]."',
+				'1'
+	);";
+	$finalQuery = $queryProd;
+	$datosProd = array(
+		0 => $_POST["codProd"],
+		1 => $_POST["nomProd"],
+		2 => $_POST["detProd"],
+		3 => $_POST["stockProd"]
+	)
 	if($ingresarPrecio == true){
 		$_SESSION["totalPrecio"] = $_POST["precioProd"];
-		echo("precio ("
-			.$nuevoIdPrecio." / 
-			original / "
-			.$fechaActual." / "
-			.$fechaActual." / "
-			.$_POST["precioProd"]."
-			 / 1 / "
-			.$nuevoIdProd."); </br>
-		");
+		$queryPrice = "INSERT INTO price
+						VALUES (
+						'".$nuevoIdPrecio."',
+						'original',
+						'".$fechaActual."',
+						'".$fechaActual."',
+						'".$_POST["precioProd"]."',
+						'1',
+						'".$nuevoIdProd."'
+		);";
+		$finalQuery = $finalQuery." ".$queryPrice;
 	}
-	echo("almacenamiento("
-	.$nuevoIdAlm." / "
-	.$fechaActual." / 
-	Sin detalles / "
-	.$_SESSION["totalPrecio"]." / "
-	.$_SESSION["cantidadPrecio"]." / "
-	.$_SESSION["stockTotalPrecio"]." / "
-	.$_POST["bodProd"]." / 
-	1);
-	");
-	$_SESSION["totalPrecio"] = 0;
+	$querySto = "INSERT INTO storage_product
+				VALUES (
+				'".$nuevoIdAlm."',
+				'".$fechaActual."',
+				'Sin detalles',
+				'0',
+				'0',
+				'".$_POST["stockProd"]."',
+				'".$_POST["stockProd"]."',
+				'".$nuevoIdProd."',
+				'".$_POST["bodProd"]."'
+	);";
+	$finalQuery = $finalQuery." ".$querySto;
+	//guardar consultas en un array session
+	if(isset($_SESSION["listPro"])){
+		if($_SESSION["listPro"] != ""){
+			$listProd = $_SESSION["listPro"];
+			$totalArray = count($_SESSION["listPro"]);
+			$listProd[$totalArray] = $finalQuery;
+			$_SESSION["listPro"] = $listProd;
+		}elseif($_SESSION["listPro"] == ""){
+			$_SESSION["listPro"] = array(
+			0 => $finalQuery
+			);
+		}
+	}else{
+		$_SESSION["listPro"] = array(
+		0 => $finalQuery
+		);
+	}
+	if(isset($_SESSION["publicListPro"])){
+		if($_SESSION["publicListPro"] != ""){
+			$publicListProd = $_SESSION["publicListPro"];
+			$totalArray = count($publicListProd);
+			$publicListProd[$totalArray] = $datosProd;
+			$_SESSION["publicListPro"] = $publicListProd;
+		}elseif($_SESSION["publicListPro"] == ""){
+			$_SESSION["publicListPro"] = array(
+				0 => $datosProd
+			);
+		}
+	}else{
+		$_SESSION["publicListPro"] = array(
+			0 => $datosProd
+		);
+	}
+	//$user->redireccionar("?producto=bodega&idBodega=".$_POST["bodProd"].);
 }else{
 	echo("Error sin ingresos");
 }

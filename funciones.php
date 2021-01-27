@@ -100,6 +100,15 @@ class conexion{
 		$messagePublic = $this->messagePublic;
 		return false;
 	}
+	public function redireccionar($pagina){
+		echo("
+		<html>
+			<head>
+				<meta http-equiv='refresh' content='0; url=http://localhost/hejevero/'".$pagina.">
+			</head>
+		</html>
+		");
+	}
 	public function volverInicio(){
 		echo("
 		<html>

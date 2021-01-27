@@ -41,7 +41,7 @@ if(isset($_COOKIE["levelNow"])){
 			}elseif(isset($_GET['producto'])){
 				include("./pages/modules/ficha.php");
 			}else{
-				echo("Error 404");
+				include("./pages/modules/presentacion.php");
 			}
 		?>
 	</body>
