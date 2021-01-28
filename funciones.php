@@ -104,7 +104,7 @@ class conexion{
 		echo("
 		<html>
 			<head>
-				<meta http-equiv='refresh' content='0; url=http://localhost/hejevero/'".$pagina.">
+				<meta http-equiv='refresh' content='0; url=http://localhost/hejevero/".$pagina.">
 			</head>
 		</html>
 		");
@@ -118,8 +118,9 @@ class conexion{
 		</html>
 		");
 	}
-	public function getActualDate(){
-		
+	public function limparSesion(){
+		$_SESSION["listPro"] = "";
+		$_SESSION["publicListPro"] = "";
 	}
 }
 ?>

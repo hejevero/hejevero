@@ -10,28 +10,35 @@
 				<div class="pt-3">
 					<table class="table table-borderless">
 						<thead>
-							<th scope="col">
-								<h4>Bodega :<?php echo(" ".$bodega['Name_wh']); ?></h4>
-							</th>
-							<th scope="col">
-								Ingreso N° 
-								<?php 
-								if($resID = $user->totalIdConsulta("warehouse")){
-									foreach($resID as $totalId){
-										$nuevoId = $totalId['total'] + 1;
-									}
-								}
-								echo($nuevoId); 
-								?>
-							</th>
+							<tr>
+								<th scope="col">
+									<h4>Bodega :<?php echo(" ".$bodega['Name_wh']); ?></h4>
+								</th>
+								<th scope="col">
+									<h6><?php echo("Fecha: ".$user->dateDDMMYY); ?></h6>
+								</th>
+							</tr>
 						</thead>
 						<tbody>
-							<th>
-								<h6>Ingreso de productos</h6>
-							</th>
-							<td>
-								<h6><?php echo("Fecha: ".$user->dateDDMMYY); ?></h6>
-							</td>
+							<tr>
+								<th>
+									<h6>Ingreso de productos</h6>
+								</th>
+								<td>
+									<div class="form-group row">
+										<label for="ingNum" class="col-sm-4 col-form-label">N&uacute;mero : </label>
+										<div class="col-sm-4">
+											<?php
+											$codigo = $user->actualYear.$user->actualMonth.$user->actualDay;
+											foreach($user->totalIdConsulta("storage_product") as $resultado){
+												$codigoDos = $resultado['total'];
+											}
+											?>
+											<input class="form-control" name="ingNum" id="ingNum" type="text" value="<?php echo($codigo.$codigoDos); ?>"/>
+										</div>
+									</div>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -57,6 +64,8 @@
 								<div class="form-group row d-none">
 									<label for="bodProd">Bodega</label>
 									<input type="text" name="bodProd" id="bodProd" value="<?php if(isset($_GET["idBodega"])){echo($_GET["idBodega"]);} ?>"/>
+									<label for="ingNum" class="col-sm-4 col-form-label">N&uacute;mero : </label>
+									<input class="form-control" name="ingNum" id="ingNum" type="text" value="<?php echo($codigo.$codigoDos); ?>"/>
 								</div>
 								<div class="form-group row">
 									<label for="codProd" class="col-sm-2 col-form-label">Codigo</label>
@@ -136,12 +145,61 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th scope="row">G211</th>
-					<td>Cartera</td>
-					<td><div style="width:100%; overflo:auto;">Cafe</div></td>
-					<td>1</td>
-				</tr>
+				<?php
+				if(isset($_SESSION["publicListPro"])){
+					if($_SESSION["publicListPro"] != ""){
+						foreach($_SESSION["publicListPro"] as $fila => $publicListProd){
+						?>
+							<tr>
+								<th scope="row"><?php echo($publicListProd[0]); ?></th>
+								<td><?php echo($publicListProd[1]); ?></td>
+								<td><div style="width:100%; overflo:auto;"><?php echo($publicListProd[2]); ?></div></td>
+								<td><?php echo($publicListProd[3]); ?></td>
+							</tr>
+						<?php
+						}
+						?>
+						<tr>
+							<th colspan="3"></th>
+							<td>
+								<div class="btn-group" role="group" aria-label="Large button group">
+									<a href="./process.php?finalizar=bodega">
+										<button type="button" class="btn btn-success border" name="modificarBodega">
+											<img src="./images/icons/cloud-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Modificar">
+											<div class="d-block d-sm-block d-md-none">Agregar</div>
+										</button>
+									</a>
+									<a href="./process.php?opcion=limpiarBodProd&producto=bodega&idBodega=<?php echo($_GET['idBodega']); ?>">
+										<button type="button" class="btn btn-danger border" name="eliminarBodega">
+											<img src="./images/icons/trash.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Eliminar">
+											<div class="d-block d-sm-block d-md-none">Limpiar</div>
+										</button>
+									</a>
+								</div>
+							</td>
+						</tr>
+						<?php
+					}else{
+						?>
+						<tr>
+							<th scope="row">Ej: G211</th>
+							<td>Ej: Cartera</td>
+							<td><div style="width:100%; overflow:auto;">Ej: Cafe</div></td>
+							<td>Ef: 1</td>
+						</tr>
+					<?php
+					}
+				}else{
+				?>
+					<tr>
+						<th scope="row">Ej: G211</th>
+						<td>Ej: Cartera</td>
+						<td><div style="width:100%; overflow:auto;">Ej: Cafe</div></td>
+						<td>Ej: 1</td>
+					</tr>
+				<?php
+				}
+				?>
 			</tbody>
 		</table>
 	</div>

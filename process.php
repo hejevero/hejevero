@@ -110,8 +110,9 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		0 => $_POST["codProd"],
 		1 => $_POST["nomProd"],
 		2 => $_POST["detProd"],
-		3 => $_POST["stockProd"]
-	)
+		3 => $_POST["stockProd"],
+		4 => $_POST["bodProd"]
+	);
 	if($ingresarPrecio == true){
 		$_SESSION["totalPrecio"] = $_POST["precioProd"];
 		$queryPrice = "INSERT INTO price
@@ -134,7 +135,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 				'0',
 				'0',
 				'".$_POST["stockProd"]."',
-				'".$_POST["stockProd"]."',
+				'".$_POST["ingNum"]."',
 				'".$nuevoIdProd."',
 				'".$_POST["bodProd"]."'
 	);";
@@ -172,7 +173,13 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 			0 => $datosProd
 		);
 	}
-	//$user->redireccionar("?producto=bodega&idBodega=".$_POST["bodProd"].);
+	$user->redireccionar("?producto=bodega&idBodega=".$_POST["bodProd"]);
+}elseif(isset($_GET["opcion"])){
+	if($_GET["opcion"] == "limpiarBodProd"){
+		$_SESSION["listPro"] = "";
+		$_SESSION["publicListPro"] = "";
+		$user->redireccionar("?producto=bodega&idBodega=".$_GET["idBodega"]);
+	}
 }else{
 	echo("Error sin ingresos");
 }

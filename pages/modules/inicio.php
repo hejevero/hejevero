@@ -184,6 +184,8 @@
 		</table>
 	</div>
 	<?php
+	}else{
+		echo("iniciar sesion");
 	}
 	?>
 </section>
