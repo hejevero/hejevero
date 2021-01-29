@@ -40,7 +40,7 @@ if(isset($_GET['bodega']) && $_GET['bodega'] == "agregar"){
 		<form class="pt-3">
 		<div class="card w-75 pt-3">
 			<div class="container-fluid pt-3 card-header">
-				<h2 class="panel-title"><?php echo ($value['Name_wh']); ?></h2>
+				<h2 class="panel-title"><?php echo ($value['Nam_wh']); ?></h2>
 			</div>
 			<div class="card-body pt-1">
 				<?php echo ($value['Cou_wh']." / ".$value['Cit_wh']." / ".$value['Dir_wh']); ?>

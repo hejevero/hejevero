@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("./funciones.php");
-$user = new conexion("localhost", "root", "", "hejevero2");
+$user = new conexion("localhost", "root", "", "hejevero3");
 if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] != ""){
 	$user->getUserNick($_POST['username'], $_POST['password']);
 	//echo($user->messagePublic);
@@ -43,7 +43,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		$estado = $_COOKIE["idUserNow"];
 		//Salida
 		$consultaBodega = "INSERT INTO warehouse 
-							(Id_wh,Cod_wh,Name_wh,Dat_wh,Cou_wh,Cit_wh,Dir_wh,Sta_wh) 
+							(Id_wh,Cod_wh,Nam_wh,Dat_wh,Cou_wh,Cit_wh,Dir_wh,Sta_wh) 
 							VALUES 
 							(".$nuevoId.",'".$codigo."','".$_POST['nombreBodega']."','".$fechaActual."','".$pais."','".$_POST['ciudadBodega']."','".$_POST['direccionBodega']."','".$estado."');
 							";
@@ -69,24 +69,43 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	$_SESSION["cantidadPrecio"] = 0;
 	$_SESSION["stockTotalPrecio"] = 0;
 	//calcular nuevo id
-	if($resIdProd = $user->totalIdConsulta("product")){
-		foreach($resIdProd as $totalIdProd){
-			$nuevoIdProd = $totalIdProd['total'] + 1;
+	$noContinuar = false;
+	if(isset($_SESSION['nuevoIdProd'])){
+		if($_SESSION['nuevoIdProd'] != ""){
+			$_SESSION['nuevoIdProd'] = $_SESSION['nuevoIdProd'] + 1;
+			$noContinuar = true;
+		}
+		if(isset($_SESSION['nuevoIdPrecio'])){
+			if($_SESSION['nuevoIdPrecio'] != ""){
+				$_SESSION['nuevoIdPrecio'] = $_SESSION['nuevoIdPrecio'] + 1;
+				$ingresarPrecio = true;
+			}
+		}
+		if($_SESSION['nuevoIdAlm'] != ""){
+			$_SESSION['nuevoIdAlm'] = $_SESSION['nuevoIdAlm'] + 1;
 		}
 	}
-	if(isset($_POST["precioProd"])){
-		if($_POST["precioProd"] != ""){
-			if($resIdPrecio = $user->totalIdConsulta("price")){
-				foreach($resIdPrecio as $totalIdPrecio){
-					$nuevoIdPrecio = $totalIdPrecio['total'] + 1;
-					$ingresarPrecio = true;
+	//nuevos id
+	if($noContinuar == false){
+		if($resIdProd = $user->totalIdConsulta("product")){
+			foreach($resIdProd as $totalIdProd){
+				$_SESSION['nuevoIdProd'] = $totalIdProd['total'] + 1;
+			}
+		}
+		if(isset($_POST["precioProd"])){
+			if($_POST["precioProd"] != ""){
+				if($resIdPrecio = $user->totalIdConsulta("price")){
+					foreach($resIdPrecio as $totalIdPrecio){
+						$_SESSION['nuevoIdPrecio'] = $totalIdPrecio['total'] + 1;
+						$ingresarPrecio = true;
+					}
 				}
 			}
 		}
-	}
-	if($resIdAlm = $user->totalIdConsulta("storage_product")){
-		foreach($resIdAlm as $totalIdAlm){
-			$nuevoIdAlm = $totalIdAlm['total'] + 1;
+		if($resIdAlm = $user->totalIdConsulta("storage_product")){
+			foreach($resIdAlm as $totalIdAlm){
+				$_SESSION['nuevoIdAlm'] = $totalIdAlm['total'] + 1;
+			}
 		}
 	}
 	//variables y constantes
@@ -94,7 +113,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	$fechaActual = $user->dateDDMMYY." ".$user->actualTime;
 	$queryProd = "INSERT INTO product
 				VALUES (
-				'".$nuevoIdProd."',
+				'".$_SESSION['nuevoIdProd']."',
 				'".$_POST["codProd"]."',
 				'".$_POST["parnumProd"]."',
 				'".$_POST["nomProd"]."',
@@ -117,26 +136,26 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		$_SESSION["totalPrecio"] = $_POST["precioProd"];
 		$queryPrice = "INSERT INTO price
 						VALUES (
-						'".$nuevoIdPrecio."',
+						'".$_SESSION['nuevoIdPrecio']."',
 						'original',
 						'".$fechaActual."',
 						'".$fechaActual."',
 						'".$_POST["precioProd"]."',
 						'1',
-						'".$nuevoIdProd."'
+						'".$_SESSION['nuevoIdProd']."'
 		);";
 		$finalQuery = $finalQuery." ".$queryPrice;
 	}
 	$querySto = "INSERT INTO storage_product
 				VALUES (
-				'".$nuevoIdAlm."',
+				'".$_SESSION['nuevoIdAlm']."',
 				'".$fechaActual."',
 				'Sin detalles',
 				'0',
 				'0',
 				'".$_POST["stockProd"]."',
 				'".$_POST["ingNum"]."',
-				'".$nuevoIdProd."',
+				'".$_SESSION['nuevoIdProd']."',
 				'".$_POST["bodProd"]."'
 	);";
 	$finalQuery = $finalQuery." ".$querySto;
@@ -176,8 +195,17 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	$user->redireccionar("?producto=bodega&idBodega=".$_POST["bodProd"]);
 }elseif(isset($_GET["opcion"])){
 	if($_GET["opcion"] == "limpiarBodProd"){
-		$_SESSION["listPro"] = "";
-		$_SESSION["publicListPro"] = "";
+		$user->limpiarBodega();
+		$user->redireccionar("?producto=bodega&idBodega=".$_GET["idBodega"]);
+	}
+}elseif(isset($_GET["finalizar"])){
+	if($_GET["finalizar"] == "bodega"){
+		$i = 0;
+		foreach($_SESSION["listPro"] as $ingProd){
+			$user->insertarPorConsulta($ingProd);
+			$i++;
+		}
+		$user->limpiarBodega();
 		$user->redireccionar("?producto=bodega&idBodega=".$_GET["idBodega"]);
 	}
 }else{

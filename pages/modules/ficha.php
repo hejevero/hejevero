@@ -12,7 +12,7 @@
 						<thead>
 							<tr>
 								<th scope="col">
-									<h4>Bodega :<?php echo(" ".$bodega['Name_wh']); ?></h4>
+									<h4>Bodega :<?php echo(" ".$bodega['Nam_wh']); ?></h4>
 								</th>
 								<th scope="col">
 									<h6><?php echo("Fecha: ".$user->dateDDMMYY); ?></h6>
@@ -146,6 +146,7 @@
 			</thead>
 			<tbody>
 				<?php
+				print_r($_SESSION["listPro"]);
 				if(isset($_SESSION["publicListPro"])){
 					if($_SESSION["publicListPro"] != ""){
 						foreach($_SESSION["publicListPro"] as $fila => $publicListProd){
@@ -163,7 +164,7 @@
 							<th colspan="3"></th>
 							<td>
 								<div class="btn-group" role="group" aria-label="Large button group">
-									<a href="./process.php?finalizar=bodega">
+									<a href="./process.php?finalizar=bodega&idBodega=<?php echo($_GET['idBodega']); ?>">
 										<button type="button" class="btn btn-success border" name="modificarBodega">
 											<img src="./images/icons/cloud-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="Modificar">
 											<div class="d-block d-sm-block d-md-none">Agregar</div>

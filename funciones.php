@@ -104,7 +104,8 @@ class conexion{
 		echo("
 		<html>
 			<head>
-				<meta http-equiv='refresh' content='0; url=http://localhost/hejevero/".$pagina.">
+				<meta http-equiv='refresh' content='0; url=http://localhost/hejevero/".$pagina."'/>
+				<!--<meta http-equiv='location' content='0; url=http://localhost/hejevero/".$pagina."'/>-->
 			</head>
 		</html>
 		");
@@ -113,7 +114,7 @@ class conexion{
 		echo("
 		<html>
 			<head>
-				<meta http-equiv='refresh' content='0; url=http://localhost/hejevero/index.php'>
+				<meta http-equiv='refresh' content='0; url=http://localhost/hejevero/index.php'/>
 			</head>
 		</html>
 		");
@@ -121,6 +122,16 @@ class conexion{
 	public function limparSesion(){
 		$_SESSION["listPro"] = "";
 		$_SESSION["publicListPro"] = "";
+		$_SESSION['nuevoIdProd'] = "";
+		$_SESSION['nuevoIdPrecio'] = "";
+		$_SESSION['nuevoIdAlm'] = "";
+	}
+	public function limpiarBodega(){
+		$_SESSION["listPro"] = "";
+		$_SESSION["publicListPro"] = "";
+		$_SESSION['nuevoIdProd'] = "";
+		$_SESSION['nuevoIdPrecio'] = "";
+		$_SESSION['nuevoIdAlm'] = "";
 	}
 }
 ?>
