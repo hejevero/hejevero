@@ -76,7 +76,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 			$noContinuar = true;
 		}
 		if(isset($_SESSION['nuevoIdPrecio'])){
-			if($_SESSION['nuevoIdPrecio'] != ""){
+			if($_SESSION['nuevoIdPrecio'] != "" && $_POST["precioProd"] != ""){
 				$_SESSION['nuevoIdPrecio'] = $_SESSION['nuevoIdPrecio'] + 1;
 				$ingresarPrecio = true;
 			}
@@ -111,9 +111,10 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	//variables y constantes
 	$user->getActDate();
 	$fechaActual = $user->dateDDMMYY." ".$user->actualTime;
-	$queryProd = "INSERT INTO product
-				VALUES (
-				'".$_SESSION['nuevoIdProd']."',
+	$queryProd = "INSERT INTO 'product'
+				(Id_pro,Cod_pro,PaNu_pro,Nam_pro,Mod_pro,Man_pro,Det_pro,Dat_pro,Stock_pro,Sta_pro)
+				VALUES 
+				(".$_SESSION['nuevoIdProd'].",
 				'".$_POST["codProd"]."',
 				'".$_POST["parnumProd"]."',
 				'".$_POST["nomProd"]."',
@@ -122,8 +123,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 				'".$_POST["detProd"]."',
 				'".$fechaActual."',
 				'".$_POST["stockProd"]."',
-				'1'
-	);";
+				'1');";
 	$finalQuery = $queryProd;
 	$datosProd = array(
 		0 => $_POST["codProd"],
@@ -133,31 +133,30 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		4 => $_POST["bodProd"]
 	);
 	if($ingresarPrecio == true){
-		$_SESSION["totalPrecio"] = $_POST["precioProd"];
-		$queryPrice = "INSERT INTO price
-						VALUES (
-						'".$_SESSION['nuevoIdPrecio']."',
+		$queryPrice = "INSERT INTO 'price'
+						(Id_price,Cod_price,Start_dat_price,End_dat_price,New_price,State_price,product_Id_pro)
+						VALUES 
+						(".$_SESSION['nuevoIdPrecio'].",
 						'original',
 						'".$fechaActual."',
 						'".$fechaActual."',
 						'".$_POST["precioProd"]."',
 						'1',
-						'".$_SESSION['nuevoIdProd']."'
-		);";
+						".$_SESSION['nuevoIdProd'].");";
 		$finalQuery = $finalQuery." ".$queryPrice;
 	}
-	$querySto = "INSERT INTO storage_product
-				VALUES (
-				'".$_SESSION['nuevoIdAlm']."',
+	$querySto = "INSERT INTO 'storage_product'
+				(Id_sp,Dat_sp,Det_sp,Tot_sp,Qua_sp,Act_Stock_sp,Sta_sp,product_Id_pro,warehpuse_Id_wh)
+				VALUES 
+				(".$_SESSION['nuevoIdAlm'].",
 				'".$fechaActual."',
 				'Sin detalles',
 				'0',
 				'0',
 				'".$_POST["stockProd"]."',
 				'".$_POST["ingNum"]."',
-				'".$_SESSION['nuevoIdProd']."',
-				'".$_POST["bodProd"]."'
-	);";
+				".$_SESSION['nuevoIdProd'].",
+				".$_POST["bodProd"].");";
 	$finalQuery = $finalQuery." ".$querySto;
 	//guardar consultas en un array session
 	if(isset($_SESSION["listPro"])){
@@ -200,13 +199,16 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	}
 }elseif(isset($_GET["finalizar"])){
 	if($_GET["finalizar"] == "bodega"){
-		$i = 0;
+		//codigo prueba
 		foreach($_SESSION["listPro"] as $ingProd){
-			$user->insertarPorConsulta($ingProd);
-			$i++;
+			//echo($ingProd);
+			$queryUno = explode(';',$ingProd,3);
+			print_r($queryUno);
+			echo("</br>");
+			//$user->insertarPorConsulta($ingProd);
 		}
-		$user->limpiarBodega();
-		$user->redireccionar("?producto=bodega&idBodega=".$_GET["idBodega"]);
+		//$user->limpiarBodega();
+		//$user->redireccionar("?producto=bodega&idBodega=".$_GET["idBodega"]);
 	}
 }else{
 	echo("Error sin ingresos");

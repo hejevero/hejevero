@@ -146,7 +146,6 @@
 			</thead>
 			<tbody>
 				<?php
-				print_r($_SESSION["listPro"]);
 				if(isset($_SESSION["publicListPro"])){
 					if($_SESSION["publicListPro"] != ""){
 						foreach($_SESSION["publicListPro"] as $fila => $publicListProd){
