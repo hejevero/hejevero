@@ -203,8 +203,14 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		foreach($_SESSION["listPro"] as $ingProd){
 			//echo($ingProd);
 			$queryUno = explode(';',$ingProd,3);
-			print_r($queryUno);
-			echo("</br>");
+			for($i = 0;;$i++){
+				if(isset($queryUno[$i]) && $queryUno[$i] != ""){
+					echo($queryUno[$i]."</br></br>");
+				}else{
+					exit;
+				}
+			}
+			//echo("</br>");
 			//$user->insertarPorConsulta($ingProd);
 		}
 		//$user->limpiarBodega();
