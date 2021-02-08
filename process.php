@@ -65,11 +65,8 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	}
 }elseif(isset($_POST["agregarProd"])){
 	$ingresarPrecio = false;
-	$_SESSION["totalPrecio"] = 0;
-	$_SESSION["cantidadPrecio"] = 0;
-	$_SESSION["stockTotalPrecio"] = 0;
-	//calcular nuevo id
 	$noContinuar = false;
+	//calcular nuevo id
 	if(isset($_SESSION['nuevoIdProd'])){
 		if($_SESSION['nuevoIdProd'] != ""){
 			$_SESSION['nuevoIdProd'] = $_SESSION['nuevoIdProd'] + 1;
@@ -85,7 +82,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 			$_SESSION['nuevoIdAlm'] = $_SESSION['nuevoIdAlm'] + 1;
 		}
 	}
-	//nuevos id
+	//segundos id
 	if($noContinuar == false){
 		if($resIdProd = $user->totalIdConsulta("product")){
 			foreach($resIdProd as $totalIdProd){
@@ -111,7 +108,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	//variables y constantes
 	$user->getActDate();
 	$fechaActual = $user->dateDDMMYY." ".$user->actualTime;
-	$queryProd = "INSERT INTO 'product'
+	$queryProd = "INSERT INTO product
 				(Id_pro,Cod_pro,PaNu_pro,Nam_pro,Mod_pro,Man_pro,Det_pro,Dat_pro,Stock_pro,Sta_pro)
 				VALUES 
 				(".$_SESSION['nuevoIdProd'].",
@@ -133,7 +130,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		4 => $_POST["bodProd"]
 	);
 	if($ingresarPrecio == true){
-		$queryPrice = "INSERT INTO 'price'
+		$queryPrice = "INSERT INTO price
 						(Id_price,Cod_price,Start_dat_price,End_dat_price,New_price,State_price,product_Id_pro)
 						VALUES 
 						(".$_SESSION['nuevoIdPrecio'].",
@@ -145,8 +142,8 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 						".$_SESSION['nuevoIdProd'].");";
 		$finalQuery = $finalQuery." ".$queryPrice;
 	}
-	$querySto = "INSERT INTO 'storage_product'
-				(Id_sp,Dat_sp,Det_sp,Tot_sp,Qua_sp,Act_Stock_sp,Sta_sp,product_Id_pro,warehpuse_Id_wh)
+	$querySto = "INSERT INTO storage_product
+				(Id_sp,Dat_sp,Det_sp,Tot_sp,Qua_sp,Act_Stock_sp,Sta_sp,product_Id_pro,warehouse_Id_wh)
 				VALUES 
 				(".$_SESSION['nuevoIdAlm'].",
 				'".$fechaActual."',
@@ -199,22 +196,25 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 	}
 }elseif(isset($_GET["finalizar"])){
 	if($_GET["finalizar"] == "bodega"){
-		//codigo prueba
-		foreach($_SESSION["listPro"] as $ingProd){
-			//echo($ingProd);
-			$queryUno = explode(';',$ingProd,3);
-			for($i = 0;;$i++){
-				if(isset($queryUno[$i]) && $queryUno[$i] != ""){
-					echo($queryUno[$i]."</br></br>");
-				}else{
-					exit;
+		try{
+			foreach($_SESSION["listPro"] as $ingProd){
+				//echo($ingProd);
+				$queryUno = explode(';',$ingProd,3);
+				$close = false;
+				for($i = 0;$i < 3;$i++){
+					if(isset($queryUno[$i]) && $queryUno[$i] != ""){
+						echo($queryUno[$i]."</br></br>");
+						//$user->insertarPorConsulta($queryUno[$i]);
+						echo ($i."</br>");
+					}
 				}
 			}
-			//echo("</br>");
-			//$user->insertarPorConsulta($ingProd);
+			//$user->limpiarBodega();
+			//$SESSION["mensajePublico"] = "Productos ingresados sin problemas";
+			//$user->redireccionar("?producto=bodega&idBodega=".$_GET["idBodega"]);
+		}catch(Exception $e){
+			echo("Excepción capturada: ". $e->getMessage(). "\n");
 		}
-		//$user->limpiarBodega();
-		//$user->redireccionar("?producto=bodega&idBodega=".$_GET["idBodega"]);
 	}
 }else{
 	echo("Error sin ingresos");

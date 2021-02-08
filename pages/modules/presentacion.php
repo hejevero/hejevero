@@ -1,9 +1,11 @@
+
 <section class="container bg-light pt-5">
 	<?php
 	//$user->limparSesion();
 	?>
 	<div class="container pt-3 text-center">
 		<h2>Bienvenido al Sistema de inventario</h2>
+		<div>Version Pre-Alpha</div>
 		<h4>Explicaci&oacute;n basica del funcionamiento del sistema.</h4>
 	</div>
 	<div class="container pt-4">
