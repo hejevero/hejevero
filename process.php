@@ -66,29 +66,44 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 }elseif(isset($_POST["agregarProd"])){
 	$ingresarPrecio = false;
 	$noContinuar = false;
+	$primerPrecio = true;
 	//calcular nuevo id
 	if(isset($_SESSION['nuevoIdProd'])){
+		//id producto
 		if($_SESSION['nuevoIdProd'] != ""){
 			$_SESSION['nuevoIdProd'] = $_SESSION['nuevoIdProd'] + 1;
 			$noContinuar = true;
 		}
+		//id precio
 		if(isset($_SESSION['nuevoIdPrecio'])){
 			if($_SESSION['nuevoIdPrecio'] != "" && $_POST["precioProd"] != ""){
 				$_SESSION['nuevoIdPrecio'] = $_SESSION['nuevoIdPrecio'] + 1;
 				$ingresarPrecio = true;
+				$primerPrecio = false;
 			}
 		}
+		//id storage_producto
 		if($_SESSION['nuevoIdAlm'] != ""){
 			$_SESSION['nuevoIdAlm'] = $_SESSION['nuevoIdAlm'] + 1;
 		}
 	}
-	//segundos id
+	//primer id
 	if($noContinuar == false){
+		//nuevo id producto
 		if($resIdProd = $user->totalIdConsulta("product")){
 			foreach($resIdProd as $totalIdProd){
 				$_SESSION['nuevoIdProd'] = $totalIdProd['total'] + 1;
 			}
 		}
+		//nuevo id storage_producto
+		if($resIdAlm = $user->totalIdConsulta("storage_product")){
+			foreach($resIdAlm as $totalIdAlm){
+				$_SESSION['nuevoIdAlm'] = $totalIdAlm['total'] + 1;
+			}
+		}
+	}
+	//nuevo id precio
+	if($primerPrecio = true){
 		if(isset($_POST["precioProd"])){
 			if($_POST["precioProd"] != ""){
 				if($resIdPrecio = $user->totalIdConsulta("price")){
@@ -97,11 +112,6 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 						$ingresarPrecio = true;
 					}
 				}
-			}
-		}
-		if($resIdAlm = $user->totalIdConsulta("storage_product")){
-			foreach($resIdAlm as $totalIdAlm){
-				$_SESSION['nuevoIdAlm'] = $totalIdAlm['total'] + 1;
 			}
 		}
 	}
