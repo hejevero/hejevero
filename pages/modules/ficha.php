@@ -13,6 +13,19 @@
 							<tr>
 								<th scope="col">
 									<h4>Bodega :<?php echo(" ".$bodega['Nam_wh']); ?></h4>
+									<?php
+									if(isset($SESSION["mensajePublico"])){
+									?>
+									<div class="alert alert-success" role="alert">
+										<p>
+											<?php
+											echo($SESSION["mensajePublico"]);
+											?>
+										</p>
+									</div>
+									<?php
+									}
+									?>
 								</th>
 								<th scope="col">
 									<h6><?php echo("Fecha: ".$user->dateDDMMYY); ?></h6>

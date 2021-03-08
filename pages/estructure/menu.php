@@ -38,8 +38,8 @@
 			</li>
 			<li class="nav-item dropdown active">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<img src="./images/icons/calendar-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
-					Opciones
+					<img src="./images/icons/bookmark-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					Modulos
 				</a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown0">
 					<li class="dropright">
@@ -76,7 +76,7 @@
 			</li>
 			<li class="nav-item dropdown active">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<img src="./images/icons/calendar-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
+					<img src="./images/icons/bookmark.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
 					Mantenedores
 				</a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
@@ -143,7 +143,7 @@
 			<li class="nav-item dropdown active">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<img src="./images/icons/calendar-plus.svg" width="25" height="25" class="d-inline-block align-top" style="color: cornflowerblue;" alt="">
-					Opciones
+					Modulos
 				</a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown0">
 					<li class="dropright">
