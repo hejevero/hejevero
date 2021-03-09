@@ -66,7 +66,11 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 }elseif(isset($_POST["agregarProd"])){
 	$ingresarPrecio = false;
 	$noContinuar = false;
-	$primerPrecio = true;
+	if(isset($_SESSION['nuevoIdPrecio']) && $_SESSION['nuevoIdPrecio']!=""){
+		$primerPrecio = true;
+	}else{
+		$primerPrecio = false;
+	}
 	//calcular nuevo id
 	if(isset($_SESSION['nuevoIdProd'])){
 		//id producto
