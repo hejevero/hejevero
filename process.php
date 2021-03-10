@@ -66,7 +66,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 }elseif(isset($_POST["agregarProd"])){
 	$ingresarPrecio = false;
 	$noContinuar = false;
-	if(isset($_SESSION['nuevoIdPrecio']) && $_SESSION['nuevoIdPrecio']!=""){
+	if(isset($_SESSION['nuevoIdPrecio']) && $_SESSION['nuevoIdPrecio']==""){
 		$primerPrecio = true;
 	}else{
 		$primerPrecio = false;
@@ -107,7 +107,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 		}
 	}
 	//nuevo id precio
-	if($primerPrecio = true){
+	if($primerPrecio == true){
 		if(isset($_POST["precioProd"])){
 			if($_POST["precioProd"] != ""){
 				if($resIdPrecio = $user->totalIdConsulta("price")){
@@ -202,7 +202,7 @@ if(isset($_POST['username']) || isset($_POST['password']) && $_POST['username'] 
 			0 => $datosProd
 		);
 	}
-	$user->redireccionar("?producto=bodega&idBodega=".$_POST["bodProd"]);
+	//$user->redireccionar("?producto=bodega&idBodega=".$_POST["bodProd"]);
 }elseif(isset($_GET["opcion"])){
 	if($_GET["opcion"] == "limpiarBodProd"){
 		$user->limpiarBodega();
