@@ -1,0 +1,197 @@
+-- ---------------------
+--      calendar      --
+-- ---------------------
+INSERT INTO calendar (Id_cal,Nam_cal,Num_cal,Sta_cal) VALUES (1,'Año',2021,'1');
+INSERT INTO calendar (Id_cal,Nam_cal,Num_cal,Sta_cal) VALUES (2,'Año',2022,'1');
+-- --------------------
+--      country      --
+-- --------------------
+INSERT INTO country (Id_cou,Nam_cou,Sta_cou) VALUES (1,'Chile','1');
+-- ------------------
+--      state      --
+-- ------------------
+INSERT INTO state (Id_sta,Nam_sta,Num_sta,Sta_sta,country_Id_cou) VALUES (1,'Coquimbo','IV','1','1');
+-- -----------------
+--      city      --
+-- -----------------
+INSERT INTO city (Id_city,Nam_city,Sta_city,State_Id_sta) VALUES (1,'La Serena','1','1');
+INSERT INTO city (Id_city,Nam_city,Sta_city,State_Id_sta) VALUES (2,'Coquimbo','1','1');
+-- -----------------
+--      user      --
+-- -----------------
+INSERT INTO user (Id_user,Nick_user,Pass_user,Reg_user,Sta_user) VALUES (1,'admin','admin','22-03-2021','1');
+INSERT INTO user (Id_user,Nick_user,Pass_user,Reg_user,Sta_user) VALUES (2,'hejevero','Hejevero1993','22-03-2021','1');
+INSERT INTO user (Id_user,Nick_user,Pass_user,Reg_user,Sta_user) VALUES (3,'empresa','admin','22-03-2021','1');
+-- -----------------
+--      role      --
+-- -----------------
+INSERT INTO role (Id_role,Nam_role,Sta_role) VALUES (1,'God','admin');
+INSERT INTO role (Id_role,Nam_role,Sta_role) VALUES (2,'Administrador - Sistema','admin');
+INSERT INTO role (Id_role,Nam_role,Sta_role) VALUES (3,'Adminitrador - Empresa','1');
+-- -------------------
+--      system      --
+-- -------------------
+INSERT INTO system (Id_sys,Sta_sys,user_id_user,role_Id_role) VALUES (1,'1','1','2');
+INSERT INTO system (Id_sys,Sta_sys,user_id_user,role_Id_role) VALUES (2,'1','2','1');
+INSERT INTO system (Id_sys,Sta_sys,user_id_user,role_Id_role) VALUES (3,'1','3','3');
+-- --------------------
+--      company      --
+-- --------------------
+INSERT INTO company (Id_com,Num_com,Nam_com,Tur_com,Dat_com,Sta_com) VALUES (1,'18384255-2','Helmo Jesús Velásquez Rodríguez','Particular','22-03-2021','1');
+-- ----------------------
+--      warehouse      --
+-- ----------------------
+INSERT INTO warehouse (Id_wh,Nam_wh,Cod_wh,Dat_wh,Dir_wh,Sta_wh,company_Id_com,city_Id_city) VALUES (1,'Casa','Casa','44277','Oceano Indico 504','1','1','1');
+-- ------------------------------
+--      role_user_company      --
+-- ------------------------------
+INSERT INTO role_user_company (Id_ruc,Sta_ruc,user_Id_user,role_Id_role,company_Id_com) VALUES (1,'1','1','3','1');
+INSERT INTO role_user_company (Id_ruc,Sta_ruc,user_Id_user,role_Id_role,company_Id_com) VALUES (2,'1','3','3','1');
+-- ------------------------------
+--         function            --
+-- ------------------------------
+INSERT INTO function (Id_fun,Nam_fun,Sta_fun) VALUES (1,'Agregar','1');
+INSERT INTO function (Id_fun,Nam_fun,Sta_fun) VALUES (2,'Modificar','1');
+INSERT INTO function (Id_fun,Nam_fun,Sta_fun) VALUES (3,'Eliminar','1');
+INSERT INTO function (Id_fun,Nam_fun,Sta_fun) VALUES (4,'Ver','1');
+-- ------------------------------
+--           priority          --
+-- ------------------------------
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (1,'Agregar','post','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (2,'Modificar','post','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (3,'Eliminar','post','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (4,'Ver','post','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (5,'Agregar','company','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (6,'Modificar','company','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (7,'Eliminar','company','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (8,'Ver','company','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (9,'Agregar','warehouse','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (10,'Modificar','warehouse','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (11,'Eliminar','warehouse','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (12,'Ver','warehouse','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (13,'Agregar','user','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (14,'Modificar','user','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (15,'Eliminar','user','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (16,'Ver','user','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (17,'Agregar','system','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (18,'Modificar','system','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (19,'Eliminar','system','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (20,'Ver','system','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (21,'Agregar','role','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (22,'Modificar','role','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (23,'Eliminar','role','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (24,'Ver','role','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (25,'Agregar','role_user_company','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (26,'Modificar','role_user_company','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (27,'Eliminar','role_user_company','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (28,'Ver','role_user_company','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (29,'Agregar','role_priority','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (30,'Modificar','role_priority','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (31,'Eliminar','role_priority','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (32,'Ver','role_priority','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (33,'Agregar','priority','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (34,'Modificar','priority','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (35,'Eliminar','priority','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (36,'Ver','priority','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (37,'Agregar','function','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (38,'Modificar','function','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (39,'Eliminar','function','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (40,'Ver','function','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (41,'Agregar','city','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (42,'Modificar','city','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (43,'Eliminar','city','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (44,'Ver','city','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (45,'Agregar','State','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (46,'Modificar','State','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (47,'Eliminar','State','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (48,'Ver','State','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (49,'Agregar','country','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (50,'Modificar','country','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (51,'Eliminar','country','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (52,'Ver','country','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (53,'Agregar','family','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (54,'Modificar','family','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (55,'Eliminar','family','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (56,'Ver','family','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (57,'Agregar','extra','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (58,'Modificar','extra','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (59,'Eliminar','extra','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (60,'Ver','extra','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (61,'Agregar','price','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (62,'Modificar','price','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (63,'Eliminar','price','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (64,'Ver','price','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (65,'Agregar','product','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (66,'Modificar','product','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (67,'Eliminar','product','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (68,'Ver','product','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (69,'Agregar','product_family','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (70,'Modificar','product_family','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (71,'Eliminar','product_family','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (72,'Ver','product_family','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (73,'Agregar','receipt','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (74,'Modificar','receipt','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (75,'Eliminar','receipt','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (76,'Ver','receipt','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (77,'Agregar','user-data','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (78,'Modificar','user-data','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (79,'Eliminar','user-data','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (80,'Ver','user-data','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (81,'Agregar','client_sell','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (82,'Modificar','client_sell','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (83,'Eliminar','client_sell','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (84,'Ver','client_sell','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (85,'Agregar','sell','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (86,'Modificar','sell','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (87,'Eliminar','sell','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (88,'Ver','sell','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (89,'Agregar','serial_sell','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (90,'Modificar','serial_sell','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (91,'Eliminar','serial_sell','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (92,'Ver','serial_sell','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (93,'Agregar','serial','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (94,'Modificar','serial','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (95,'Eliminar','serial','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (96,'Ver','serial','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (97,'Agregar','day','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (98,'Modificar','day','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (99,'Eliminar','day','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (100,'Ver','day','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (101,'Agregar','month','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (102,'Modificar','month','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (103,'Eliminar','month','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (104,'Ver','month','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (105,'Agregar','calendar','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (106,'Modificar','calendar','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (107,'Eliminar','calendar','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (108,'Ver','calendar','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (109,'Agregar','record','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (110,'Modificar','record','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (111,'Eliminar','record','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (112,'Ver','record','1','4');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (113,'Agregar','type','1','1');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (114,'Modificar','type','1','2');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (115,'Eliminar','type','1','3');
+INSERT INTO priority (Id_prio,Pub_prio,Tab_prio,Sta_prio,function_id_fun) VALUES (116,'Ver','type','1','4');
+-- ------------------------------
+--            type             --
+-- ------------------------------
+INSERT INTO type (Id_type,Nam_type,Sta_type) VALUES (1,'Consulta','1');
+INSERT INTO type (Id_type,Nam_type,Sta_type) VALUES (2,'Respuesta','1');
+INSERT INTO type (Id_type,Nam_type,Sta_type) VALUES (3,'Noticia','1');
+INSERT INTO type (Id_type,Nam_type,Sta_type) VALUES (4,'Registro','1');
+INSERT INTO type (Id_type,Nam_type,Sta_type) VALUES (5,'Evaluación','1');
+-- ------------------------------
+--           family            --
+-- ------------------------------
+INSERT INTO family (Id_fam,Nam_fam,Sta_fam) VALUES (1,'Tecnología','1');
+INSERT INTO family (Id_fam,Nam_fam,Sta_fam) VALUES (2,'Hogar','1');
+INSERT INTO family (Id_fam,Nam_fam,Sta_fam) VALUES (3,'Ferretería','1');
+-- ------------------------------
+--           config            --
+-- ------------------------------
+INSERT INTO config (Id_conf,Nam_conf,Det_conf,Rol_conf,Sta_conf) VALUES (1,'Color de fondo','Color del fondo del menu','Diseño','1');
+INSERT INTO config (Id_conf,Nam_conf,Det_conf,Rol_conf,Sta_conf) VALUES (2,'Color de letras','Color de las letras del menu','Diseño','1');
+INSERT INTO config (Id_conf,Nam_conf,Det_conf,Rol_conf,Sta_conf) VALUES (3,'Inicio Laboral','Inicio de la hora para ver los registro','Calendario','1');
+INSERT INTO config (Id_conf,Nam_conf,Det_conf,Rol_conf,Sta_conf) VALUES (4,'Final Laboral','Hora para finalizar horario laboral','Calendario','1');
+INSERT INTO config (Id_conf,Nam_conf,Det_conf,Rol_conf,Sta_conf) VALUES (5,'Intervalo Laboral','Horas de trabajo pude variar entre 15 min, 30 min o 1 hora','Calendario','1');
