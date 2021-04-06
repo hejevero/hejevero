@@ -12,5 +12,5 @@ if(!$enlace){
 //define('DB_CONFIG_USER', 'root');
 //define('DB_CONFIG_PW', '');
 //$dsn = 'mysql:host='.DB_CONFIG_HOST.';dbname'.DB_CONFIG_DB.';';
-//define('DB_CONFIG_DSN', $dsn);1
+//define('DB_CONFIG_DSN', $dsn);
 ?>
