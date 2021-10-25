@@ -666,13 +666,6 @@ CREATE TABLE IF NOT EXISTS `hejevero4`.`post_user-data` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `hejevero4`.`table1`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hejevero4`.`table1` (
-)
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `hejevero4`.`detail_user`
