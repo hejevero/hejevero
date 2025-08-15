@@ -1,3 +1,48 @@
+# 👋 Hola, soy Helmo Velásquez
+
+💻 **Desarrollador Backend** y **Administrador de Sistemas** con experiencia en entornos **Linux** (Rocky Linux) y **Windows Server 2019**.  
+Apasionado por la **seguridad informática**, el **desarrollo web** y la **automatización de procesos**.
+
+---
+
+## 📍 Sobre mí
+
+- 🌎 **Ubicación:** Chile  
+- 🎯 **Enfoque actual:** Desarrollo web backend y administración de servidores  
+- 📚 **Formación:** Estudiante de Informática con conocimientos en seguridad y administración de sistemas  
+- 🔐 **Áreas de interés:** Hardening de servidores, control de accesos, monitoreo de incidentes, CI/CD
+
+---
+
+## 🛠 Tecnologías y herramientas
+
+- **Lenguajes:** PHP, JavaScript, Kotlin, Bash
+- **Sistemas operativos:** Rocky Linux, Windows Server 2019
+- **Herramientas:** Git, GitHub, UFW, Fail2ban, PhpSpreadsheet
+- **Bases de datos:** MySQL, MariaDB
+
+---
+
+## 📂 Experiencia destacada
+
+- 🔹 **Hardening de servidores Linux:** Implementación de medidas de seguridad, firewall, control de accesos y monitoreo con Fail2ban.  
+- 🔹 **Automatización con scripts:** Scripts en Bash para administración y seguridad de sistemas.  
+- 🔹 **Proyectos web:** Desarrollo de aplicaciones y APIs backend.
+
+---
+
+## 📫 Contacto
+
+- 📧 **Correo:** helmo.velasquez@example.com  
+- 💼 **LinkedIn:** [linkedin.com/in/helmovelasquez](https://linkedin.com/in/helmovelasquez)  
+- 🖥 **GitHub:** [github.com/helmovelasquez](https://github.com/helmovelasquez)  
+
+---
+
+> ⚡ “La seguridad no es un producto, es un proceso continuo.”
+
+--
+
 # 👋 Hi! I'm Helmo Velásquez
 
 I'm a backend developer passionate about creating robust and efficient solutions. I have experience in web development and strong knowledge in various languages and frameworks.
